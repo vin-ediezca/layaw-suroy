@@ -1,0 +1,9 @@
+<h2>Destinations</h2>
+
+</p><%= link_to button_tag("Add a Tag"), new_tag_path %></p>
+
+<% @tags.each do |tag| %>
+  <h3><%= tag.title %></h3>
+  <%= link_to (image_tag tag.image_header, class: "img-header"), tag.image_header, target: :_blank %>
+  <%= tag.description %>
+<% end %>

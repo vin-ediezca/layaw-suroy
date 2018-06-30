@@ -1,0 +1,14 @@
+<%= form_for(@tag) do |form| %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  
+  <%= form.label :image_header %>
+  <%= form.file_field :image_header %>
+  
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  
+  <%= form.submit "Add" %>
+  
+<% end %>
