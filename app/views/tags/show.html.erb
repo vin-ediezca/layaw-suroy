@@ -1,0 +1,17 @@
+<h3><%= @tag.title %></h3>
+<p><%= link_to (image_tag @tag.image_header, class: "img-header"), @tag.image_header, target: :_blank  %></p>
+<p><%= @tag.description %></p>
+
+<p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
+
+<% @destinations.each do |dest| %>
+  <h4><%= dest.blog_title %></h4>
+  <%= dest.blog_body %>
+  <%= dest.created_by %>
+  <%= dest.last_update_by %>
+<% end %>
+
+<h4>Uploaded Images<h4>
+<% @tag.image_uploads.each do |image| %>
+  <%= link_to (image_tag image, class: "img-upload"), image, target: :_blank %>
+<% end %>

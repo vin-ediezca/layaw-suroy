@@ -1,9 +1,8 @@
-<h3>Add a Destination Tag</h3>
+<h3><%= @tag.title %></h3>
 
 <%= form_for(@tag) do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <p><%= link_to (image_tag @tag.image_header, class: "img-header"), @tag.image_header, target: :_blank  %></p>
   
   <%= f.label :image_header %>
   <%= f.file_field :image_header %>
@@ -16,7 +15,13 @@
     <%= f.text_area :description, class: "desc-box" %>
   </p>
   
-  <%= f.submit "Add" %>
+  <%= f.submit "Update" %>
+  
   <%= link_to button_tag("Cancel"), root_path, data: {confirm: "Are you sure you want to cancel?"} %>
   
+<% end %>
+
+<h4>Uploaded Images<h4>
+<% @tag.image_uploads.each do |image| %>
+  <%= link_to (image_tag image, class: "img-upload"), image, target: :_blank %>
 <% end %>

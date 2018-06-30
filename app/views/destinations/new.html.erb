@@ -1,0 +1,25 @@
+<h3><%= @tag_title %></h3>
+<p><%= @tag_description %></p>
+
+<%= form_for(@destination) do |f| %>
+  
+  <%= f.label :blog_title %>
+  <%= f.text_field :blog_title %>
+  
+  <p>
+    <%= f.label :blog_body %>
+    <%= f.text_area :blog_body, class: "blog-box" %>
+  </p>
+
+<!--   
+  <#%= f.label :create_by %>
+  <#%= f.text_field :created_by %>
+  
+  <#%= f.label :last_update_by %>
+  <#%= f.text_field :last_update_by %>
+-->
+  
+  <%= f.submit "Add" %>
+  <%= link_to button_tag("Cancel"), tag_path(id: @tag_id), data: {confirm: "Are you sure you want to cancel?"} %>
+  
+<% end %>

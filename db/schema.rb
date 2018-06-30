@@ -34,10 +34,8 @@ ActiveRecord::Schema.define(version: 2018_06_29_123958) do
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
     t.string "blog_title"
-    t.string "blog"
+    t.string "blog_body"
     t.string "created_by"
     t.string "last_update_by"
     t.integer "tag_id"
