@@ -1,5 +1,15 @@
 <h3><%= @tag.title %> Destination Tag</h3>
 
+<p>
+  <% if @tag.errors.any? %>
+    <span class="error">Errors:</span>
+    <% @tag.errors.full_messages.each do |message| %>
+      <div class="error-m"><%= message %></div>
+    <% end %>
+  <% end %>
+</p>
+
+
 <%= form_for(@tag) do |f| %>
 
     <%= f.label :title %>
@@ -30,7 +40,7 @@
 
   <p>
     <%= f.submit "Update" %>
-    <%= link_to button_tag("Cancel"), tag_path(id: @tag.id), data: {confirm: "Are you sure you want to cancel?"} %>
+    <%= link_to button_tag("Cancel"), @tag, data: {confirm: "Are you sure you want to cancel?"} %>
   </p>
 
 <% end %>

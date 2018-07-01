@@ -18,9 +18,9 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-div {
+.container {
   margin-top: 50px;
-  margin-bottom: 70px;
+  margin-bottom: 100px;
 }
 
 .desc-box {
@@ -31,4 +31,8 @@ div {
 .blog-box {
   width: 400px;
   height: 200px;
+}
+
+.error, .error-m {
+  color: #ff0000;
 }

@@ -1,5 +1,14 @@
 <h3>Add a Destination Tag</h3>
 
+<p>
+  <% if @tag.errors.any? %>
+    <span class="error">Errors:</span>
+    <% @tag.errors.full_messages.each do |message| %>
+      <div class="error-m"><%= message %></div>
+    <% end %>
+  <% end %>
+</p>
+
 <%= form_for(@tag) do |f| %>
 
   <%= f.label :title %>

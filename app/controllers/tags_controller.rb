@@ -19,7 +19,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:notice] = "New tag successfully created"
-      redirect_to root_url
+      redirect_to @tag
     else
       render 'new'
     end
@@ -27,12 +27,15 @@ class TagsController < ApplicationController
   
   def edit
     @tag = Tag.find(params[:id])
+    session[:for_id] = @tag.id
+    session[:for_tag_title] = @tag.title
+    session[:for_tag_description] = @tag.description
   end
   
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      redirect_to root_path
+      redirect_to @tag
     else
       render 'edit'
     end
