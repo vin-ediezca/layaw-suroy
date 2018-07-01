@@ -1,27 +1,36 @@
-<h3><%= @tag.title %></h3>
+<h3><%= @tag.title %> Destination Tag</h3>
 
 <%= form_for(@tag) do |f| %>
 
-  <p><%= link_to (image_tag @tag.image_header, class: "img-header"), @tag.image_header, target: :_blank  %></p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+  <p><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></p>
   
   <%= f.label :image_header %>
   <%= f.file_field :image_header %>
-  
-  <%= f.label :image_uploads %>
-  <%= f.file_field :image_uploads, multiple: true %>
   
   <p>
     <%= f.label :description %>
     <%= f.text_area :description, class: "desc-box" %>
   </p>
   
-  <%= f.submit "Update" %>
-  
-  <%= link_to button_tag("Cancel"), root_path, data: {confirm: "Are you sure you want to cancel?"} %>
-  
-<% end %>
+  <p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
 
-<h4>Uploaded Images<h4>
-<% @tag.image_uploads.each do |image| %>
-  <%= link_to (image_tag image, class: "img-upload"), image, target: :_blank %>
+  <h4>Uploaded Images</h4>
+
+  <p>
+    <%= f.label :image_uploads %>
+    <%= f.file_field :image_uploads, multiple: true %>
+  </p>
+
+  <% @tag.image_uploads.each do |image| %>
+    <%= link_to (image_tag image.variant(resize: "500x200")), image, target: :_blank %>
+  <% end %>
+
+  <p>
+    <%= f.submit "Update" %>
+    <%= link_to button_tag("Cancel"), tag_path(id: @tag.id), data: {confirm: "Are you sure you want to cancel?"} %>
+  </p>
+
 <% end %>

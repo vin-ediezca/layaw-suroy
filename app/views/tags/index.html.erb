@@ -6,7 +6,7 @@
   <div>
     <h3><%= tag.title %></h3>
     <p><%= link_to "Edit", edit_tag_path(tag) %> | <%= link_to "Show More", tag_path(tag) %></p>
-    <%= link_to (image_tag tag.image_header, class: "img-header"), tag.image_header, target: :_blank %>
+    <%= link_to (image_tag tag.image_header.variant(resize: "700x400")), tag.image_header, target: :_blank %>
     <%= tag.description %>
   </div>
 <% end %>
