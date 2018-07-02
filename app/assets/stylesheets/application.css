@@ -36,3 +36,7 @@
 .error, .error-m {
   color: #ff0000;
 }
+
+.notice {
+  color: #00FF00;
+}

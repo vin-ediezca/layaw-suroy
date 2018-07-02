@@ -9,11 +9,10 @@
   <% end %>
 </p>
 
-
 <%= form_for(@tag) do |f| %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
   <p><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></p>
   

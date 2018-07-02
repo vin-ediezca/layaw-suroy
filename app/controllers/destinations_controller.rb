@@ -21,6 +21,25 @@ class DestinationsController < ApplicationController
     end
   end
   
+  def edit
+    @destination = Destination.find(params[:id])
+    @tag_id = session[:for_id] # for cancel redirection
+    @tag_title = session[:for_tag_title] # views Tag title
+  end
+  
+  def update
+    @destination = Destination.find(params[:id])
+    @tag_id = session[:for_id] # for cancel redirection
+    @tag_title = session[:for_tag_title] # views Tag title
+    
+    if @destination.update(destination_params)
+      flash[:notice] = "Blog successfully updated"
+      redirect_to tag_path(id: @tag_id )
+    else
+      render 'edit'
+    end
+  end
+  
   private
     def destination_params
       params.require(:destination).permit(:tag_id, :blog_title, :blog_body)

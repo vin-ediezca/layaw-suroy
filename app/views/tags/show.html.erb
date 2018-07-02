@@ -1,5 +1,11 @@
 <h3><%= @tag.title %></h3>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 <p><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></p>
+
 <p><%= @tag.description %></p>
 
 <p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
@@ -9,6 +15,7 @@
   <%= dest.blog_body %>
   <%= dest.created_by %>
   <%= dest.last_update_by %>
+  <%= link_to "Edit", edit_destination_path(dest) %>
 <% end %>
 
 <h4>Uploaded Images<h4>

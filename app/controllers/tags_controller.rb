@@ -18,7 +18,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      flash[:notice] = "New tag successfully created"
+      flash[:notice] = "New destination tag successfully created"
       redirect_to @tag
     else
       render 'new'
@@ -35,6 +35,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
+      flash[:notice] = "Destination tag successfully updated"
       redirect_to @tag
     else
       render 'edit'

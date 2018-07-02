@@ -1,0 +1,23 @@
+<h3><%= @tag_title %> Blog</h3>
+
+<p>
+  <% if @destination.errors.any? %>
+    <span class="error">Errors:</span>
+    <% @destination.errors.full_messages.each do |message| %>
+      <div class="error-m"><%= message %></div>
+    <% end %>
+  <% end %>
+</p>
+
+<%= form_for(@destination) do |f| %>
+  
+  <%= f.label :blog_title %>
+  <%= f.text_field :blog_title %>
+  
+  <%= f.label :blog_body %>
+  <%= f.text_area :blog_body, class: "blog-box" %>
+  
+  <%= f.submit "Update" %>
+  <%= link_to button_tag("Cancel"), tag_path(id: @tag_id ), data: {confirm: "Are you sure you want to cancel?"} %>
+  
+<% end %>
