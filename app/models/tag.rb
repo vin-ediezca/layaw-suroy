@@ -18,13 +18,13 @@ class Tag < ApplicationRecord
     def image_type
       if image_header.attached? == false
         errors.add(:image_header, "is missing")
-      elsif !image_header.content_type.in?(%('image/jpeg imgae/png'))
+      elsif !image_header.content_type.in?(%('image/jpeg image/png'))
         errors.add(:image_header, "must be JPEG or PNG")
       end
       
       if image_uploads.attached? == true
         image_uploads.each do |image|
-          if !image.content_type.in?(%('image/jpeg imgae/png'))
+          if !image.content_type.in?(%('image/jpeg image/png'))
             errors.add(:image_uploads, "must be JPEG or PNG")
           end
         end
