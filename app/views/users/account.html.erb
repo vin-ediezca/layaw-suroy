@@ -1,0 +1,13 @@
+<h3>My Account</h3>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<ul>
+  <li><b>Email:</b> <%= @account.email %></li>
+  <li><b>First Name:</b> <%= @account.first_name %></li>
+  <li><b>Last Name:</b> <%= @account.last_name %></li>
+  <li><b>Role:</b> <%= @account.role %></li>
+  <li><%= link_to "Change Password", edit_user_path(@account) %></li>
+</ul>

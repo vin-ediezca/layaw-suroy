@@ -2,6 +2,10 @@
 
 <p><%= link_to button_tag("Add a Destination Tag"), new_tag_path %></p>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 <% @tags.each do |tag| %>
   <div class="container">
     <h3><%= tag.title %></h3>

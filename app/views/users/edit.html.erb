@@ -1,0 +1,18 @@
+<h3>Change Password for <%= @user.first_name %> <%= @user.last_name %></h3>
+
+<%= form_for(@user) do |f| %>
+  <ul>
+    <li><p>New Password <%= f.password_field :password %></p></li>
+    <li><p>Confirm New Password <%= f.password_field :password_confirmation %></p></li>
+    <li><p><%= f.submit "Update" %><p></li>
+  </ul>
+<% end %>
+
+<p>
+  <% if @user.errors.any? %>
+    <div class="error">Errors:</div>
+    <% @user.errors.full_messages.each do |message| %>
+      <div class="error-m"><%= message %></div>
+    <% end %>
+  <% end %>
+</p>

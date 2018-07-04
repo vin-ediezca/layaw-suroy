@@ -2,7 +2,7 @@
 
 <p>
   <% if @tag.errors.any? %>
-    <span class="error">Errors:</span>
+    <div class="error">Errors:</div>
     <% @tag.errors.full_messages.each do |message| %>
       <div class="error-m"><%= message %></div>
     <% end %>

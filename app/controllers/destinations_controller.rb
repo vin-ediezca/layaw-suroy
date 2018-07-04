@@ -1,4 +1,6 @@
 class DestinationsController < ApplicationController
+  before_action :require_user, only: [:new, :create, :edit, :update]
+
   def new
     @tag_id = session[:for_id] # for cancel redirection
     @tag_title = session[:for_tag_title] # views Tag title
