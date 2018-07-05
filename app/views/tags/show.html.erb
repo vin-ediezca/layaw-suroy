@@ -8,14 +8,18 @@
 
 <p><%= @tag.description %></p>
 
-<p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
+<% if current_user %>
+  <p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
+<% end %>
 
 <% @destinations.each do |dest| %>
   <h4><%= dest.blog_title %></h4>
   <%= dest.blog_body %>
   <%= dest.created_by %>
   <%= dest.last_update_by %>
-  <%= link_to "Edit", edit_destination_path(dest) %>
+  <% if current_user %>
+    <%= link_to "Edit", edit_destination_path(dest) %>
+  <% end %>
 <% end %>
 
 <h4>Uploaded Images<h4>

@@ -1,6 +1,9 @@
 <h2>Destinations</h2>
 
-<p><%= link_to button_tag("Add a Destination Tag"), new_tag_path %></p>
+<% if current_user %>
+  <p><%= link_to "Add a Destination Tag", new_tag_path %></p>
+<% end %>
+
 
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
@@ -11,6 +14,11 @@
     <h3><%= tag.title %></h3>
     <%= link_to (image_tag tag.image_header.variant(resize: "700x400")), tag.image_header, target: :_blank %>
     <p><%= tag.description %></p>
-    <p><%= link_to "Edit", edit_tag_path(tag) %> | <%= link_to "Show More", tag_path(tag) %></p>
+    <p>
+      <% if current_user %>
+        <%= link_to "Edit", edit_tag_path(tag) %> | 
+      <% end %>
+      <%= link_to "Show More", tag_path(tag) %>
+    </p>
   </div>
 <% end %>

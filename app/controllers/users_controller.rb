@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user, only: [:new, :create, :edit, :update, :account]
-  before_action :require_admin, only: [:new, :create]
+  before_action :require_user, only: [:new, :create, :show, :edit, :update, :account]
+  before_action :require_admin, only: [:new, :create, :show]
   before_action :check_user, only: [:account, :edit, :update]
 
   def new

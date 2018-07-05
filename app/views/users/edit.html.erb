@@ -9,7 +9,7 @@
     <li><p>Old Password <%= password_field_tag :current_password, params[:current_password] %></p></li>
     <li><p>New Password <%= f.password_field :password %></p></li>
     <li><p>Confirm New Password <%= f.password_field :password_confirmation %></p></li>
-    <li><p><%= f.submit "Update" %><p></li>
+    <li><p><%= f.submit "Update" %> <%= link_to button_tag("Cancel"), user_account_path(id: current_user), data: {confirm: "Are you sure you want to cancel?"} %><p></li>
   </ul>
 <% end %>
 
