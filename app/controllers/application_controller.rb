@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to '/' unless current_user.admin?
   end
+  
+  def check_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:error] = "You are not clever as you think you are ;)"
+      redirect_to user_account_path(id: current_user)
+    end
+  end
 end

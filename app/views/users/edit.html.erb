@@ -1,7 +1,12 @@
 <h3>Change Password for <%= @user.first_name %> <%= @user.last_name %></h3>
 
+<% flash.each do |name, msg| -%>
+  <p><%= content_tag :div, msg, class: name %></p>
+<% end -%>
+
 <%= form_for(@user) do |f| %>
   <ul>
+    <li><p>Old Password <%= password_field_tag :current_password, params[:current_password] %></p></li>
     <li><p>New Password <%= f.password_field :password %></p></li>
     <li><p>Confirm New Password <%= f.password_field :password_confirmation %></p></li>
     <li><p><%= f.submit "Update" %><p></li>

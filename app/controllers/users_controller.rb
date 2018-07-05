@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update, :account]
   before_action :require_admin, only: [:new, :create]
+  before_action :check_user, only: [:account, :edit, :update]
 
   def new
     @user = User.new
@@ -18,16 +19,22 @@ class UsersController < ApplicationController
     end
   end
   
+  def show
+    @user = User.all
+  end
+  
   def edit
     @user = User.find(params[:id])
   end
   
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    user = User.find_by_email(current_user.email).try(:authenticate, params[:current_password])
+    if user && @user.update(user_params)
       flash[:notice] = "Password successfully changed"
       redirect_to user_account_path(id: current_user.id)
     else
+      flash[:error] = "Invalid old password"
       render 'edit'
     end
   end
