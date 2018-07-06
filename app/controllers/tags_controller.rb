@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update]
 
   def index
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :desc)
   end
   
   def show
