@@ -15,11 +15,14 @@
 <% @destinations.each do |dest| %>
   <h4><%= dest.blog_title %></h4>
   <%= dest.blog_body %>
-  <%= dest.created_by %>
-  <%= dest.last_update_by %>
   <% if current_user %>
-    <%= link_to "Edit", edit_destination_path(dest) %>
+    <%= link_to "Edit", edit_destination_path(dest) %> | 
+    <%= link_to "Delete", destination_path(dest), method: "delete", data: {confirm: "Are you sure you want to delete #{dest.blog_title} blog?"} %>
   <% end %>
+  <ul>
+    <li><span class="signature">Created by: <%= dest.created_by %></span></li>
+    <li><span class="signature">Last updated by: <%= dest.last_update_by %></span></li>
+  </ul>
 <% end %>
 
 <h4>Uploaded Images<h4>

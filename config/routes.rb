@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show, :new, :create, :edit, :update]
   
   # Destination
-  resources :destinations, only: [:new, :create, :edit, :update]
+  resources :destinations, only: [:new, :create, :edit, :update, :destroy]
   
   # User
   get 'signup' => 'users#new'

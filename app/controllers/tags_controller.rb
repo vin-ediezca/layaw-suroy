@@ -8,9 +8,9 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @destinations = @tag.destinations
-    session[:for_id] = @tag.id
-    session[:for_tag_title] = @tag.title
-    session[:for_tag_description] = @tag.description
+    session[:for_id] = @tag.id # Stores :for_id value for destinations#new & destination#create
+    session[:for_tag_title] = @tag.title # Stores :for_tag_title value for destinations#new & destination#create
+    session[:for_tag_description] = @tag.description # Stores :for_tag_description value for destinations#new & destination#create
   end
   
   def new
@@ -29,9 +29,6 @@ class TagsController < ApplicationController
   
   def edit
     @tag = Tag.find(params[:id])
-    session[:for_id] = @tag.id
-    session[:for_tag_title] = @tag.title
-    session[:for_tag_description] = @tag.description
   end
   
   def update

@@ -44,3 +44,8 @@ ul {
 .notice {
   color: #00FF00;
 }
+
+.signature {
+  font-style: italic;
+  color: #808080;
+}
