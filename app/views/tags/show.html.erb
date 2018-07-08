@@ -9,7 +9,7 @@
 <p><%= @tag.description %></p>
 
 <% if current_user %>
-  <p><%= link_to button_tag("Add a Blog"), new_destination_path %></p>
+  <p><%= link_to "Add a Blog", new_destination_path, class: "btn btn-primary" %></p>
 <% end %>
 
 <% @destinations.each do |dest| %>

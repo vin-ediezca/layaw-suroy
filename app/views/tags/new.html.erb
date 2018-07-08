@@ -10,9 +10,10 @@
 </p>
 
 <%= form_for(@tag) do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
   
   <%= f.label :image_header %>
   <%= f.file_field :image_header %>
@@ -20,12 +21,13 @@
   <%= f.label :image_uploads %>
   <%= f.file_field :image_uploads, multiple: true %>
   
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "desc-box" %>
-  </p>
-  
-  <%= f.submit "Add" %>
-  <%= link_to button_tag("Cancel"), root_path, data: {confirm: "Are you sure you want to cancel?"} %>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
+    <%= f.text_area :description, class: "form-control", rows: "5" %>
+  </div>
+  <div class="btn-margin">
+    <%= f.submit "Add", class: "btn btn-primary" %>
+    <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
+  </div>
   
 <% end %>

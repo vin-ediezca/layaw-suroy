@@ -1,24 +1,47 @@
 <h3>Add User</h3>
 
 <%= form_for(:user, url: "/signup") do |f| %>
-  <%= f.text_field :first_name, :placeholder => "First Name" %>
-  <%= f.text_field :last_name, :placeholder => "Last Name" %>
-  <%= f.email_field :email, :placeholder => "Email" %> 
-  <%= f.password_field :password, :placeholder => "Password" %>
-  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
-  Role: <%= f.select(:role) do %>
-    <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
-      <%= content_tag(:option, c.first, value: c.last) %>
-    <% end %>
-  <% end %>
-  <%= f.submit "Add User" %>
+  
+  <div class="input-group">
+    <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
+  </div>
+  <div class="input-group">
+    <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
+  </div>
+  <div class="input-group">
+    <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
+  </div>
+  <div class="input-group">
+    <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+  </div>
+  <div class="input-group">
+    <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
+  </div>
+  
+  <div class="input-group">
+    <div class="btn-group">
+      <span class="btn btn-default btn-lg dropdown-toggle">
+        <strong>ROLE</strong>
+        <%= f.select(:role) do %>
+          <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+  
+  <div class="btn-margin">
+    <%= f.submit "Add User", class: "btn btn-primary" %>
+  </div>
+  
 <% end %>
 
-<p>
+<div>
   <% if @user.errors.any? %>
     <div class="error">Errors:</div>
     <% @user.errors.full_messages.each do |message| %>
       <div class="error-m"><%= message %></div>
     <% end %>
   <% end %>
-</p>
+</div>

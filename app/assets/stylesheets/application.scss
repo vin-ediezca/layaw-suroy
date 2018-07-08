@@ -15,17 +15,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
+body { 
+  padding-top: 70px;
+}
+
+.input-group {
+  width: 500px;
+  margin: 10px;
+}
+
+.input-group-addon {
+  width: 60px;
 }
 
 ul {
   list-style-type: none;
-}
-
-.desc-box {
-  width: 400px;
-  height: 60px;
 }
 
 .blog-box {
@@ -44,4 +48,9 @@ ul {
 .signature {
   font-style: italic;
   color: #808080;
+}
+
+.btn-margin {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
