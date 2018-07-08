@@ -68,3 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # For Amazon S3
 gem "aws-sdk-s3", require: false
+
+# For Bootstrap
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
