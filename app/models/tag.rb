@@ -14,6 +14,14 @@ class Tag < ApplicationRecord
     }.join(' ')
   end
   
+  def self.search(pattern)
+    if pattern.blank?  # blank? covers both nil and empty string
+      all
+    else
+      where('title ILIKE ? OR description ILIKE ?', "%#{pattern}%", "%#{pattern}%")
+    end
+  end
+  
   private
     def image_type
       if image_header.attached? == false

@@ -44,12 +44,14 @@
             </li>
           </ul>
           -->
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          <span class="navbar-form navbar-left">
+            <%= form_tag(tags_path, method: :get) do %>
+              <div class="form-group">
+                <%= text_field_tag :tag_search, params[:tag_search], class: "form-control", placeholder: "Search" %>
+              </div>
+              <%= submit_tag "Submit", class: "btn btn-default" %>
+            <% end %>
+          </span>
   
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
