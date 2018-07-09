@@ -1,8 +1,16 @@
 <h3>Log In</h3>
 
-<% flash.each do |name, msg| -%>
-  <p><%= content_tag :div, msg, class: name %></p>
-<% end -%>
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <strong>Info:</strong> <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:danger] %>
+  <div class="alert alert-danger" role="alert">
+    <strong>Warning:</strong> <%= flash[:danger] %>
+  </div>
+<% end %>
 
 <%= form_for(:session, url: login_path) do |f| %>
   <div class="input-group input-group-lg">

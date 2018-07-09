@@ -18,7 +18,7 @@ class DestinationsController < ApplicationController
     @destination.last_update_by = current_user.first_name + " " + current_user.last_name
     
     if @destination.save
-      flash[:notice] = "New blog successfully added"
+      flash[:success] = "New blog successfully added"
       redirect_to tag_path(id: @destination.tag_id)
     else
       render 'new'
@@ -38,7 +38,7 @@ class DestinationsController < ApplicationController
     @destination.last_update_by = current_user.first_name + " " + current_user.last_name
     
     if @destination.update(destination_params)
-      flash[:notice] = "Blog successfully updated"
+      flash[:success] = "Blog successfully updated"
       redirect_to tag_path(id: @tag_id )
     else
       render 'edit'

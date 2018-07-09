@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def check_user
     @user = User.find(params[:id])
     unless @user == current_user
-      flash[:error] = "You are not clever as you think you are ;)"
+      flash[:danger] = "You are not clever as you think you are ;)"
       redirect_to user_account_path(id: current_user)
     end
   end

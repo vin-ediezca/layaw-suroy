@@ -1,13 +1,11 @@
 <h3><%= @tag_title %> Blog</h3>
 
-<p>
-  <% if @destination.errors.any? %>
-    <div class="error">Errors:</div>
-    <% @destination.errors.full_messages.each do |message| %>
-      <div class="error-m"><%= message %></div>
-    <% end %>
+
+<% if @destination.errors.any? %>
+  <% @destination.errors.full_messages.each do |message| %>
+    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
   <% end %>
-</p>
+<% end %>
 
 <%= form_for(@destination) do |f| %>
   

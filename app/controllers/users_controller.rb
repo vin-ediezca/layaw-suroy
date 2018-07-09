@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       # uncomment line if you want to redirect to new user after save
       # session[:user_id] = @user.id
-      flash[:notice] = "New user successfully created"
+      flash[:success] = "New user successfully created"
       redirect_to root_url
     else
       render 'new'
@@ -31,10 +31,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     user = User.find_by_email(current_user.email).try(:authenticate, params[:current_password])
     if user && @user.update(user_params)
-      flash[:notice] = "Password successfully changed"
+      flash[:success] = "Password successfully changed"
       redirect_to user_account_path(id: current_user.id)
     else
-      flash[:error] = "Invalid old password"
+      flash[:danger] = "Invalid old password"
       render 'edit'
     end
   end

@@ -1,8 +1,16 @@
 <h3>Change Password for <%= @user.first_name %> <%= @user.last_name %></h3>
 
-<% flash.each do |name, msg| -%>
-  <p><%= content_tag :div, msg, class: name %></p>
-<% end -%>
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <strong>Info:</strong> <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:danger] %>
+  <div class="alert alert-danger" role="alert">
+    <strong>Warning:</strong> <%= flash[:danger] %>
+  </div>
+<% end %>
 
 <%= form_for(@user) do |f| %>
 

@@ -1,15 +1,13 @@
 <h3>Add a Destination Tag</h3>
 
-<p>
-  <% if @tag.errors.any? %>
-    <div class="error">Errors:</div>
-    <% @tag.errors.full_messages.each do |message| %>
-      <div class="error-m"><%= message %></div>
-    <% end %>
+<% if @tag.errors.any? %>
+  <% @tag.errors.full_messages.each do |message| %>
+    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
   <% end %>
-</p>
+<% end %>
 
 <%= form_for(@tag) do |f| %>
+
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
     <%= f.text_field :title, class: "form-control" %>
@@ -25,6 +23,7 @@
     <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
     <%= f.text_area :description, class: "form-control", rows: "5" %>
   </div>
+  
   <div class="btn-margin">
     <%= f.submit "Add", class: "btn btn-primary" %>
     <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>

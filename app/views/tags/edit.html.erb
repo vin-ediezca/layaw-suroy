@@ -1,13 +1,12 @@
 <h3><%= @tag.title %> Destination Tag</h3>
 
-<p>
-  <% if @tag.errors.any? %>
-    <div class="error">Errors:</div>
-    <% @tag.errors.full_messages.each do |message| %>
-      <div class="error-m"><%= message %></div>
-    <% end %>
+
+<% if @tag.errors.any? %>
+  <% @tag.errors.full_messages.each do |message| %>
+    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
   <% end %>
-</p>
+<% end %>
+
 
 <%= form_for(@tag) do |f| %>
   

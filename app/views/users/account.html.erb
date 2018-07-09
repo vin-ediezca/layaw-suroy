@@ -1,8 +1,10 @@
 <h3>My Account</h3>
 
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-<% end -%>
+<% if flash[:danger] %>
+  <div class="alert alert-danger" role="alert">
+    <strong>Warning:</strong> <%= flash[:danger] %>
+  </div>
+<% end %>
 
 <ul>
   <li><b>Email:</b> <%= @account.email %></li>
