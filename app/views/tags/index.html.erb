@@ -6,22 +6,30 @@
   </div>
 <% end %>
 
-<div class="row">
-  <% @tags.each do |tag| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= link_to (image_tag tag.image_header.variant(resize: "700x400")), tag.image_header, target: :_blank %>
-        <div class="caption">
-          <h3><%= tag.title %></h3>
-          <p><%= tag.description %></p>
-          <p>
-            <% if current_user %>
-              <%= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary" %>
-            <% end %>
-            <%= link_to "Show More", tag_path(tag), class: "btn btn-default" %>
-          </p>
+
+  
+
+<% if @tags.present? %>
+  <div class="row">
+    <% @tags.each do |tag| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= link_to (image_tag tag.image_header.variant(resize: "700x400")), tag.image_header, target: :_blank %>
+          <div class="caption">
+            <h3><%= tag.title %></h3>
+            <p><%= tag.description %></p>
+            <p>
+              <% if current_user %>
+                <%= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary" %>
+              <% end %>
+              <%= link_to "Show More", tag_path(tag), class: "btn btn-default" %>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% else %>
+  <h4>No Results Found</h4>
+<% end %>
+
