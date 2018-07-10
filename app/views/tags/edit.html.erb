@@ -33,6 +33,7 @@
     <%= f.label :image_uploads %>
     <%= f.file_field :image_uploads, multiple: true %>
   </p>
+  
 
   <% @tag.image_uploads.each do |image| %>
     <%= link_to (image_tag image.variant(resize: "500x200")), image, target: :_blank %>

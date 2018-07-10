@@ -18,7 +18,7 @@ class Tag < ApplicationRecord
     if pattern.blank?  # blank? covers both nil and empty string
       all
     else
-      where('title ILIKE ? OR description ILIKE ?', "%#{pattern}%", "%#{pattern}%")
+      where('title LIKE ? OR description LIKE ?', "%#{pattern}%", "%#{pattern}%")
     end
   end
   

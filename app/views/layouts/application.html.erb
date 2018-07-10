@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <% if @home_banner %>
+      <div id="banner">
+        <h1>Lagaw Suroy Travel Blog <small>Where your next destination matters</small></h1>
+      </div>
+      <div class="container">
+        <p>“Lagaw” is the Hiligaynon word equivalent to travelling and “Suroy” is the Cebuano word for it. Most of the places featured are local spots in Negros and Cebu Islands.</p>
+        <p>Going alone? No worries, we have our own sets of tour guides ready to accompany you to the places you want to visit while making sure you enjoy your privacy. With family and friends? We will provide you and your comrades with hassle free travel experience each with local touch of hospitality. </p>
+        <p>Each destination will surely be a unique travel experience.</p>
+      </div>
+    <% end %>
+    
     <div class="container">
     
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -22,7 +33,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <%= link_to "Lagaw Suroy", root_url, class: "navbar-brand" %>
+            
+            <%= link_to image_tag("https://s3.amazonaws.com/lagawsuroy/Manual+Uploads/lslogo1.png", alt: "Lagaw Suroy"), root_path, class: "navbar-brand" %>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->

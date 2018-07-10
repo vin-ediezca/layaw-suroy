@@ -2,6 +2,12 @@ class TagsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update]
 
   def index
+    @home_banner  = true
+    
+    unless params[:tag_search].blank?
+      @home_banner  = false
+    end
+    
     @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
   end
   

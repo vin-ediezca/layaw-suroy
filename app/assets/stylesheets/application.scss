@@ -16,7 +16,11 @@
 @import "bootstrap";
 
 body {
-  padding-top: 70px;
+  padding-top: 50px;
+}
+
+.container {
+  padding-top: 50px;
 }
 
 #footer {
@@ -25,6 +29,31 @@ body {
   color: #2F4F4F;
   padding: 10px;
   text-align: center;
+}
+
+#body {
+  padding-bottom: 60px;   /* Height of the footer */
+}
+
+#banner {
+  height: 46rem;
+  background-image: url('https://s3.amazonaws.com/lagawsuroy/Manual+Uploads/IMG_6067.JPG');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#banner h1 {
+  font-size: 3.75rem;
+  color: #ffa700;
+}
+
+#banner h1 small{
+  color: #fff;
 }
 
 .input-group {
