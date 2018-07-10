@@ -6,8 +6,11 @@
   </div>
 <% end %>
 
-
-  
+<% if flash[:notice] %>
+  <p>
+    <strong><%= flash[:notice] %></strong>
+  </p>
+<% end %>
 
 <% if @tags.present? %>
   <div class="row">

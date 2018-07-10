@@ -6,6 +6,7 @@ class TagsController < ApplicationController
     
     unless params[:tag_search].blank?
       @home_banner  = false
+      flash[:notice] = "Search Results for: #{params[:tag_search]}"
     end
     
     @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
