@@ -2,12 +2,13 @@ class TagsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update]
 
   def index
-    @home_banner  = true # allows banner to be displayed if viewed from index 
+    @home_banner  = true # allows banner to be displayed if viewed from index
+    flash[:search] = nil
     
     # Disables banner to be displayed while doing search
     unless params[:tag_search].blank?
       @home_banner  = false
-      flash[:message] = "Search results for: #{params[:tag_search]}"
+      flash[:search] = "Search results for: #{params[:tag_search]}"
     end
     
     @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
