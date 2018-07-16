@@ -34,11 +34,8 @@
   
 <% end %>
 
-<p>
-  <% if @user.errors.any? %>
-    <div class="error">Errors:</div>
-    <% @user.errors.full_messages.each do |message| %>
-      <div class="error-m"><%= message %></div>
-    <% end %>
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
   <% end %>
-</p>
+<% end %>
