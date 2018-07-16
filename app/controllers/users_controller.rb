@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       redirect_to user_account_path(id: current_user.id)
     else
       flash[:danger] = "Invalid old password" unless user
+      flash[:danger] = nil if user
       render 'edit'
     end
   end
