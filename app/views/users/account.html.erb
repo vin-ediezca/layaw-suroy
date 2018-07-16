@@ -16,6 +16,7 @@
   <li><b>Email:</b> <%= @account.email %></li>
   <li><b>First Name:</b> <%= @account.first_name %></li>
   <li><b>Last Name:</b> <%= @account.last_name %></li>
-  <li><b>Role:</b> <%= @account.role %></li>
+  <li><b>Last Update:</b> <%= @account.updated_at %></li>
+    <li><b>Role:</b> <%= @account.role %></li>
   <li><%= link_to "Change Password", edit_user_path(@account) %></li>
 </ul>

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
   
   def manage
-    @users = User.all
+    @users = User.all.order(:id)
   end
   
   def destroy
