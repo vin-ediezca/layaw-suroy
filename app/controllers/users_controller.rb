@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:success] = "Password successfully changed"
       redirect_to user_account_path(id: current_user.id)
     else
-      flash[:danger] = "Invalid old password"
+      flash[:danger] = "Invalid old password" unless user
       render 'edit'
     end
   end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "User deleted successfully"
+    flash[:notice] = "User deleted successfully"
     redirect_to manage_path
   end
   

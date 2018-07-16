@@ -6,6 +6,12 @@
   </div>
 <% end %>
 
+<% if flash[:notice] %>
+  <div class="alert alert-info" role="alert">
+    <strong>Info:</strong> <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <table class="table table-bordered">
   <thead>
     <tr>
