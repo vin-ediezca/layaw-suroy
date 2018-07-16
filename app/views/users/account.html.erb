@@ -1,5 +1,11 @@
 <h3>My Account</h3>
 
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <strong>Success:</strong> <%= flash[:success] %>
+  </div>
+<% end %>
+
 <% if flash[:danger] %>
   <div class="alert alert-danger" role="alert">
     <strong>Warning:</strong> <%= flash[:danger] %>
