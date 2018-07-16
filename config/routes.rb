@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
   get '/account/:id' => 'users#account', as: :user_account
-  resources :users, only: [:edit, :update]
+  get 'manage' => 'users#manage', as: :manage
+  resources :users, only: [:edit, :update, :destroy]
   
   # Session
   get 'login' => 'sessions#new'

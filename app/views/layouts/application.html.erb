@@ -81,6 +81,7 @@
                   <li><%= link_to "Add a Destination Tag", new_tag_path %></li>
                   <% if current_user.admin? %>
                     <li><%= link_to "Add User", signup_path %></li>
+                    <li><%= link_to "Manage Accounts", manage_path %></li>
                   <% end %>
                   
                   <!-- 

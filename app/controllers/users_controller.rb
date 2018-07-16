@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:new, :create, :show, :edit, :update, :account]
-  before_action :require_admin, only: [:new, :create, :show]
+  before_action :require_admin, only: [:new, :create, :manage, :destroy]
   before_action :check_user, only: [:account, :edit, :update]
 
   def new
@@ -13,14 +13,10 @@ class UsersController < ApplicationController
       # uncomment line if you want to redirect to new user after save
       # session[:user_id] = @user.id
       flash[:success] = "New user successfully created"
-      redirect_to root_url
+      redirect_to manage_path
     else
       render 'new'
     end
-  end
-  
-  def show
-    @user = User.all
   end
   
   def edit
@@ -41,6 +37,17 @@ class UsersController < ApplicationController
   
   def account
     @account = User.find(params[:id])
+  end
+  
+  def manage
+    @users = User.all
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "User deleted successfully"
+    redirect_to manage_path
   end
   
   private

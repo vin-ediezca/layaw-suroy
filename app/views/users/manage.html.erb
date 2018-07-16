@@ -1,0 +1,33 @@
+<h3>Manage Accounts</h3>
+
+<% if flash[:success] %>
+  <div class="alert alert-success" role="alert">
+    <strong>Success:</strong> <%= flash[:success] %>
+  </div>
+<% end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <% unless current_user.id == user.id %>
+          <td><%= link_to "Remove", user_path(user), method: "delete", data: {confirm: "Are you sure you want to remove #{user.email} from users?"} %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  <tbody>
+</table>
