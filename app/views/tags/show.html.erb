@@ -33,7 +33,7 @@
   </ul>
 <% end %>
 
-<h4>Uploaded Images<h4>
+<h4>Featured Images<h4>
 <% @tag.image_uploads.each do |image| %>
   <%= link_to (image_tag image.variant(resize: "500x200")), image, target: :_blank %>
 <% end %>
