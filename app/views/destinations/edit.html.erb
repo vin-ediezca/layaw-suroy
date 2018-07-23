@@ -8,6 +8,9 @@
 <% end %>
 
 <%= form_for(@destination) do |f| %>
+
+  <%= f.label :blog_image %>
+  <%= f.file_field :blog_image %>
   
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
@@ -20,7 +23,7 @@
   </div>
   
   <div class="btn-margin">
-    <%= f.submit "Update", class: "btn btn-primary" %> 
+    <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
     <%= link_to "Cancel", tag_path(id: @tag_id ), data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
   </div>
   

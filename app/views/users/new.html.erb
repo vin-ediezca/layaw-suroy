@@ -32,7 +32,7 @@
   </div>
   
   <div class="btn-margin">
-    <%= f.submit "Add User", class: "btn btn-primary" %>
+    <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
   </div>
   
 <% end %>

@@ -25,7 +25,7 @@
   </div>
   
   <div class="btn-margin">
-    <%= f.submit "Add", class: "btn btn-primary" %>
+    <%= f.button "Add", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
     <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
   </div>
   
