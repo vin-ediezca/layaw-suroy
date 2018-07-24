@@ -15,10 +15,10 @@
     <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <p><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></p>
-  
   <%= f.label :image_header %>
   <%= f.file_field :image_header %>
+  
+  <div class="margin-20"><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></div>
   
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
@@ -27,12 +27,12 @@
   
   <p><%= link_to "Add a Blog", new_destination_path, class: "btn btn-primary" %></p>
 
-  <h4>Featured Images</h4>
+  <h4>Featured Photos</h4>
 
-  <p>
+  <div class="margin-20">
     <%= f.label :image_uploads %>
     <%= f.file_field :image_uploads, multiple: true %>
-  </p>
+  </div>
   
   <% @tag.image_uploads.each do |image| %>
     <%= link_to (image_tag image.variant(resize: "500x200")), image, target: :_blank %>
