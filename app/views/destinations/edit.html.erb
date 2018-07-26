@@ -12,7 +12,10 @@
   <%= f.label :blog_image %>
   <%= f.file_field :blog_image %>
   
-  <div class="margin-20"><%= link_to (image_tag @destination.blog_image.variant(resize: "700x400")), @destination.blog_image, target: :_blank  %></div>
+  
+  <% if @destination.blog_image.attached? %>
+    <div class="margin-20"><%= link_to (image_tag @destination.blog_image.variant(resize: "700x400")), @destination.blog_image, target: :_blank  %></div>
+  <% end %>
   
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
