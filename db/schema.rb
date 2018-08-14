@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_124344) do
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.string "description"
+    t.string "map_embed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

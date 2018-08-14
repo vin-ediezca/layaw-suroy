@@ -1,27 +1,40 @@
-<h3><%= @tag_title %></h3>
-<p><%= @tag_description %></p>
-
-
-<% if @destination.errors.any? %>
-  <% @destination.errors.full_messages.each do |message| %>
-    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
-  <% end %>
-<% end %>
-
-
 <%= form_for(@destination) do |f| %>
+  
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="<%= edit_tag_path(id: @tag_id)%>">Edit <%= @tag_title %> Tag</a></li>
+    <li role="presentation" class="active"><a href="#">Add a <%= @tag_title %> Blog</a></li>
+  </ul>
 
-  <%= f.label :blog_image %>
-  <%= f.file_field :blog_image %>
+  <div class="panel panel-default">
   
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
-    <%= f.text_field :blog_title, class: "form-control" %>
-  </div>
+    <div class="panel-body">
+
+      <h3><%= @tag_title %></h3>
+      <p><%= @tag_description %></p>
+
+
+      <% if @destination.errors.any? %>
+        <% @destination.errors.full_messages.each do |message| %>
+          <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
+        <% end %>
+      <% end %>
+
+
+      <%= f.label :blog_image %>
+      <%= f.file_field :blog_image %>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
+        <%= f.text_field :blog_title, class: "form-control" %>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_body %></span>
+        <%= f.text_area :blog_body, class: "form-control", rows: 15 %>
+      </div>
+    
+    </div>
   
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_body %></span>
-    <%= f.text_area :blog_body, class: "form-control", rows: 15 %>
   </div>
   
   <div class="btn-margin">

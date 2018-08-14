@@ -1,42 +1,65 @@
-<h3><%= @tag.title %> Destination Tag</h3>
-
-
-<% if @tag.errors.any? %>
-  <% @tag.errors.full_messages.each do |message| %>
-    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
-  <% end %>
-<% end %>
-
-
 <%= form_for(@tag) do |f| %>
-  
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
 
-  <%= f.label :image_header %>
-  <%= f.file_field :image_header %>
+  <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Edit <%= @tag.title %> Tag</a></li>
+      <li role="presentation"><a href="<%= new_destination_path %>">Add a <%= @tag.title %> Blog</a></li>
+  </ul>
   
-  <div class="margin-20"><%= link_to (image_tag @tag.image_header.variant(resize: "700x400")), @tag.image_header, target: :_blank  %></div>
-  
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
-    <%= f.text_area :description, class: "form-control", rows: "5" %>
-  </div>
-  
-  <p><%= link_to "Add a Blog", new_destination_path, class: "btn btn-primary" %></p>
+  <div class="panel panel-default">
 
-  <h4>Featured Photos</h4>
+    <div class="panel-body">
+    
+      <h3><%= @tag.title %> Destination Tag</h3>
 
-  <div class="margin-20">
-    <%= f.label :image_uploads %>
-    <%= f.file_field :image_uploads, multiple: true %>
+
+      <% if @tag.errors.any? %>
+        <% @tag.errors.full_messages.each do |message| %>
+          <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
+        <% end %>
+      <% end %>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <%= f.label :image_header %>
+      <%= f.file_field :image_header %>
+      
+      <div class="margin-20">
+        <%= link_to (image_tag @tag.image_header.variant(resize: "300x300")), @tag.image_header, target: :_blank  %>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
+        <%= f.text_area :description, class: "form-control", rows: "5" %>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :map_embed %></span>
+        <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
+      </div>
+      
+      <div class="margin-20">
+        <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+      <h4>Featured Photos</h4>
+
+      <div class="margin-20">
+        <%= f.label :image_uploads %>
+        <%= f.file_field :image_uploads, multiple: true %>
+      </div>
+      
+      <div class="featured-mod">
+        <% @tag.image_uploads.each do |image| %>
+          <%= link_to (image_tag image.variant(resize: "200x200")), image, target: :_blank %>
+        <% end %>
+      </div>
+    
+    </div>
+    
   </div>
-  
-  <% @tag.image_uploads.each do |image| %>
-    <%= link_to (image_tag image.variant(resize: "500x200")), image, target: :_blank %>
-  <% end %>
   
   <div class="btn-margin">
     <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>

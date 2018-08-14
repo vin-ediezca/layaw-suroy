@@ -1,22 +1,32 @@
-<h3>My Account</h3>
-
-<% if flash[:success] %>
-  <div class="alert alert-success" role="alert">
-    <strong>Success:</strong> <%= flash[:success] %>
-  </div>
-<% end %>
-
-<% if flash[:danger] %>
-  <div class="alert alert-danger" role="alert">
-    <strong>Warning:</strong> <%= flash[:danger] %>
-  </div>
-<% end %>
-
-<ul>
-  <li><b>Email:</b> <%= @account.email %></li>
-  <li><b>First Name:</b> <%= @account.first_name %></li>
-  <li><b>Last Name:</b> <%= @account.last_name %></li>
-  <li><b>Last Update:</b> <%= @account.updated_at %></li>
-    <li><b>Role:</b> <%= @account.role %></li>
-  <li><%= link_to "Change Password", edit_user_path(@account) %></li>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">My Account</a></li>
+  <li role="presentation"><a href="<%= edit_user_path(@account) %>">Change Password </a></li>
 </ul>
+  
+<div class="panel panel-default">
+
+  <div class="panel-body">
+
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <strong>Success:</strong> <%= flash[:success] %>
+      </div>
+    <% end %>
+
+    <% if flash[:danger] %>
+      <div class="alert alert-danger" role="alert">
+        <strong>Warning:</strong> <%= flash[:danger] %>
+      </div>
+    <% end %>
+
+    <ul>
+      <li><b>Email:</b> <%= @account.email %></li>
+      <li><b>First Name:</b> <%= @account.first_name %></li>
+      <li><b>Last Name:</b> <%= @account.last_name %></li>
+      <li><b>Last Update:</b> <%= @account.updated_at %></li>
+      <li><b>Role:</b> <%= @account.role %></li>
+    </ul>
+
+  </div>
+
+</div>

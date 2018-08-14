@@ -1,41 +1,52 @@
-<h3>Manage Users</h3>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Manage Users</a></li>
+  <li role="presentation"><a href="<%= signup_path %>">Add User</a></li>
+</ul>
+  
+<div class="panel panel-default">
 
-<% if flash[:success] %>
-  <div class="alert alert-success" role="alert">
-    <strong>Success:</strong> <%= flash[:success] %>
-  </div>
-<% end %>
+  <div class="panel-body">
 
-<% if flash[:notice] %>
-  <div class="alert alert-info" role="alert">
-    <strong>Info:</strong> <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>ID #</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Last Update</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.updated_at %></td>
-        <td><%= user.role %></td>
-        <% unless current_user.id == user.id || user.id == 1 %>
-          <td><%= link_to "", user_path(user), method: "delete", data: {confirm: "Are you sure you want to remove #{user.email} from users?"}, class: "glyphicon glyphicon-trash" %></td>
-        <% end %>
-      </tr>
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <strong>Success:</strong> <%= flash[:success] %>
+      </div>
     <% end %>
-  <tbody>
-</table>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert">
+        <strong>Info:</strong> <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID #</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Last Update</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.updated_at %></td>
+            <td><%= user.role %></td>
+            <% unless current_user.id == user.id || user.id == 1 %>
+              <td><%= link_to "", user_path(user), method: "delete", data: {confirm: "Are you sure you want to remove #{user.email} from users?"}, class: "glyphicon glyphicon-trash" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+
+  </div>
+
+</div>

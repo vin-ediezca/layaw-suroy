@@ -93,6 +93,18 @@ ul {
   color: #808080;
 }
 
+.featured img {
+  height: 175px;
+  width: auto;
+  margin-top: 5px;
+}
+
+.featured-mod img {
+  height: 100px;
+  width: auto;
+  margin-top: 5px;
+}
+
 .margin-20 {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -101,4 +113,8 @@ ul {
 .btn-margin {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.panel {
+  border-top: 0;
 }

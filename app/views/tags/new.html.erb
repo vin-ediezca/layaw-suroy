@@ -1,27 +1,42 @@
-<h3>Add a Destination Tag</h3>
-
-<% if @tag.errors.any? %>
-  <% @tag.errors.full_messages.each do |message| %>
-    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
-  <% end %>
-<% end %>
-
 <%= form_for(@tag) do |f| %>
 
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Add a Destination Tag</a></li>
+  </ul>
+
+  <div class="panel panel-default">
   
-  <%= f.label :image_header %>
-  <%= f.file_field :image_header %>
+    <div class="panel-body">
+
+      <% if @tag.errors.any? %>
+        <% @tag.errors.full_messages.each do |message| %>
+          <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
+        <% end %>
+      <% end %>
+
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      
+      <%= f.label :image_header %>
+      <%= f.file_field :image_header %>
+      
+      <%= f.label :image_uploads %>
+      <%= f.file_field :image_uploads, multiple: true %>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
+        <%= f.text_area :description, class: "form-control", rows: "5" %>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><%= f.label :map_embed %></span>
+        <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
+      </div>
+    
+    </div>
   
-  <%= f.label :image_uploads %>
-  <%= f.file_field :image_uploads, multiple: true %>
-  
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
-    <%= f.text_area :description, class: "form-control", rows: "5" %>
   </div>
   
   <div class="btn-margin">

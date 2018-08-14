@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
   has_one_attached :image_header
   has_many_attached :image_uploads
   
-  validates :title, :description, presence: true
+  validates :title, :description, :map_embed, presence: true
   validate :image_type
   
   before_save :capitalize_fields

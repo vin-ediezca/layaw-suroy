@@ -1,34 +1,51 @@
-<h3>Add User</h3>
-
 <%= form_for(:user, url: "/signup") do |f| %>
-  
-  <div class="input-group">
-    <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
-  </div>
-  <div class="input-group">
-    <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
-  </div>
-  <div class="input-group">
-    <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
-  </div>
-  <div class="input-group">
-    <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
-  </div>
-  <div class="input-group">
-    <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
-  </div>
-  
-  <div class="input-group">
-    <div class="btn-group">
-      <span class="btn btn-default btn-lg dropdown-toggle">
-        <strong>ROLE</strong>
-        <%= f.select(:role) do %>
-          <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="<%= manage_path %>">Manage Users</a></li>
+    <li role="presentation" class="active"><a href="#">Add User</a></li>
+  </ul>
+    
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+    
+      <% if @user.errors.any? %>
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
         <% end %>
-      </span>
+      <% end %>
+      
+      <div class="input-group">
+        <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
+      </div>
+      <div class="input-group">
+        <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
+      </div>
+      <div class="input-group">
+        <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
+      </div>
+      <div class="input-group">
+        <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+      </div>
+      <div class="input-group">
+        <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
+      </div>
+      
+      <div class="input-group">
+        <div class="btn-group">
+          <span class="btn btn-default btn-lg dropdown-toggle">
+            <strong>ROLE</strong>
+            <%= f.select(:role) do %>
+              <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
+                <%= content_tag(:option, c.first, value: c.last) %>
+              <% end %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    
     </div>
+  
   </div>
   
   <div class="btn-margin">
@@ -37,8 +54,3 @@
   
 <% end %>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |message| %>
-    <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
-  <% end %>
-<% end %>

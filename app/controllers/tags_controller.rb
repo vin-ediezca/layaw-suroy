@@ -55,6 +55,6 @@ class TagsController < ApplicationController
   
   private
     def tag_params
-      params.require(:tag).permit(:title, :description, :image_header, image_uploads: [])
+      params.require(:tag).permit(:title, :description, :map_embed, :image_header, image_uploads: [])
     end
 end
