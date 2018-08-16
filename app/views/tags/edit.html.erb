@@ -63,7 +63,7 @@
       
       <div class="featured-mod">
         <% @tag.image_uploads.each do |image| %>
-          <%= link_to (image_tag image.variant(resize: "200x200"), class: "img-responsive"), image, target: :_blank %>
+          <%= link_to (image_tag image.variant(resize: "200x200")), image, target: :_blank %>
         <% end %>
       </div>
       
