@@ -1,61 +1,69 @@
-<h3><%= @tag.title %></h3>
+<div class="row">
 
-<% if flash[:success] %>
-  <div class="alert alert-success" role="alert">
-    <strong>Success:</strong> <%= flash[:success] %>
-  </div>
-<% end %>
-
-<% if flash[:notice] %>
-  <div class="alert alert-info" role="alert">
-    <strong>Info:</strong> <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<div class="margin-20">
-  <%= link_to (image_tag @tag.image_header.variant(resize: "600x600")), @tag.image_header, target: :_blank  %>
-</div>
-
-<p><%= @tag.description %></p>
-
-<% @destinations.each do |dest| %>
-
-  <div class="blog">
+  <div class="col-md-8">
   
-    <h4><%= dest.blog_title %></h4>
-    
-    <% if dest.blog_image.attached? %>
-      <%= link_to (image_tag dest.blog_image.variant(resize: "600x600")), dest, target: :_blank %>
-    <% end %>
-    
-    <p><%= simple_format(dest.blog_body) %></p>
-    
-    <% if current_user %>
-      <%= link_to "Edit", edit_destination_path(dest) %> | 
-      <%= link_to "Delete", destination_path(dest), method: "delete", data: {confirm: "Are you sure you want to delete #{dest.blog_title} blog?"} %>
-    <% end %>
-    
-    <% if current_user %>
-      <ul>
-        <li><span class="signature"><em>Created by: <%= dest.created_by %></em></span></li>
-        <li><span class="signature"><em>Last updated by: <%= dest.last_update_by %></em></span></li>
-      </ul>
-    <% end %>
-    
-  </div>
-  
-<% end %>
+    <h3><%= @tag.title %></h3>
 
-<% unless @tag.map_embed.empty? %>
-  <div class="margin-20">
-    <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-  </div>
-<% end %>
-  
-<h3>Featured Photos<h3>
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <strong>Success:</strong> <%= flash[:success] %>
+      </div>
+    <% end %>
 
-<div class="featured">
-  <% @tag.image_uploads.each do |image| %>
-    <%= link_to (image_tag image.variant(resize: "300x300")), image, target: :_blank %>
-  <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert">
+        <strong>Info:</strong> <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <div class="margin-20">
+      <%= link_to (image_tag @tag.image_header.variant(resize: "600x600")), @tag.image_header, target: :_blank  %>
+    </div>
+
+    <p><%= @tag.description %></p>
+
+    <% @destinations.each do |dest| %>
+
+      <div class="blog">
+      
+        <h4><%= dest.blog_title %></h4>
+        
+        <% if dest.blog_image.attached? %>
+          <%= link_to (image_tag dest.blog_image.variant(resize: "600x600")), dest, target: :_blank %>
+        <% end %>
+        
+        <p><%= simple_format(dest.blog_body) %></p>
+        
+        <% if current_user %>
+          <%= link_to "Edit", edit_destination_path(dest) %> | 
+          <%= link_to "Delete", destination_path(dest), method: "delete", data: {confirm: "Are you sure you want to delete #{dest.blog_title} blog?"} %>
+        <% end %>
+        
+        <% if current_user %>
+          <ul>
+            <li><span class="signature"><em>Created by: <%= dest.created_by %></em></span></li>
+            <li><span class="signature"><em>Last updated by: <%= dest.last_update_by %></em></span></li>
+          </ul>
+        <% end %>
+        
+      </div>
+      
+    <% end %>
+
+    <% unless @tag.map_embed.empty? %>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+    <% end %>
+      
+    <h3>Featured Photos<h3>
+
+    <div class="featured">
+      <% @tag.image_uploads.each do |image| %>
+        <%= link_to (image_tag image.variant(resize: "300x300")), image, target: :_blank %>
+      <% end %>
+    </div>
+
+  </div>
+
 </div>
