@@ -1,13 +1,13 @@
-<%= form_for(@tag) do |f| %>
-
-  <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Edit <%= @tag.title %> Tag</a></li>
-      <li role="presentation"><a href="<%= new_destination_path %>">Add a <%= @tag.title %> Blog</a></li>
-  </ul>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Edit <%= @tag.title %> Tag</a></li>
+  <li role="presentation"><a href="<%= new_destination_path %>">Add a <%= @tag.title %> Blog</a></li>
+</ul>
   
-  <div class="panel panel-default">
+<div class="panel panel-default">
 
-    <div class="panel-body">
+    <div class="panel-body">   
+    
+    <%= form_for @tag, url: {action: "update"}, html: {class: ""} do |f| %>
     
       <h3><%= @tag.title %> Destination Tag</h3>
 
@@ -18,31 +18,41 @@
         <% end %>
       <% end %>
       
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
-        <%= f.text_field :title, class: "form-control" %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
       </div>
 
-      <%= f.label :image_header %>
-      <%= f.file_field :image_header %>
+      <div class="form-group">
+        <%= f.label :image_header %>
+        <%= f.file_field :image_header %>
+      </div>
       
       <div class="margin-20">
         <%= link_to (image_tag @tag.image_header.variant(resize: "300x300")), @tag.image_header, target: :_blank  %>
       </div>
       
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
-        <%= f.text_area :description, class: "form-control", rows: "5" %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
+          <%= f.text_area :description, class: "form-control", rows: "5" %>
+        </div>
       </div>
       
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1"><%= f.label :map_embed %></span>
-        <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><%= f.label :map_embed %></span>
+          <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
+        </div>
       </div>
       
-      <div class="margin-20">
-        <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div>
+      <% unless @tag.map_embed.empty? %>
+        <div class="margin-20">
+          <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      <% end %>
 
       <h4>Featured Photos</h4>
 
@@ -56,14 +66,14 @@
           <%= link_to (image_tag image.variant(resize: "200x200")), image, target: :_blank %>
         <% end %>
       </div>
-    
-    </div>
-    
-  </div>
-  
-  <div class="btn-margin">
-    <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
-    <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
-  </div>
+      
+      <div class="btn-margin">
+        <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
+        <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
+      </div>
 
-<% end %>
+    <% end %>
+
+  </div>
+    
+</div>

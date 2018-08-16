@@ -1,13 +1,13 @@
-<%= form_for(@user) do |f| %>
-
-  <ul class="nav nav-tabs">
-    <li role="presentation"><a href="<%= user_account_path(id: current_user) %>">My Account</a></li>
-    <li role="presentation" class="active"><a href="#">Change Password</a></li>
-  </ul>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="<%= user_account_path(id: current_user) %>">My Account</a></li>
+  <li role="presentation" class="active"><a href="#">Change Password</a></li>
+</ul>
   
-  <div class="panel panel-default">
+<div class="panel panel-default">
 
-    <div class="panel-body">
+  <div class="panel-body">
+    
+    <%= form_for @user, url: {action: "update"}, html: {class: ""} do |f| %>
     
       <h4>Change Password for <%= @user.first_name %> <%= @user.last_name %></h4>
     
@@ -22,18 +22,26 @@
           <strong>Warning:</strong> <%= flash[:danger] %>
         </div>
       <% end %>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Old Password</span>
+          <%= password_field_tag :current_password, params[:current_password], class: "form-control" %>
+        </div>
+      </div>
 
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Old Password</span>
-        <%= password_field_tag :current_password, params[:current_password], class: "form-control" %>
-      </div>  
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">New Password</span>
-        <%= f.password_field :password, class: "form-control" %>
-      </div>  
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Confirm New Password</span>
-        <%= f.password_field :password_confirmation, class: "form-control" %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">New Password</span>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Confirm New Password</span>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
       </div>
       
       <% if @user.errors.any? %>
@@ -41,14 +49,17 @@
           <div class="alert alert-warning" role="alert"><strong>Error:</strong> <%= message %></div>
         <% end %>
       <% end %>
+      
+      <div class="btn-margin">
+        <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
+        <%= link_to "Cancel", user_account_path(id: current_user), data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
+      </div>
     
-    </div>
-  
+    <% end %>
+    
   </div>
   
-  <div class="btn-margin">
-    <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
-    <%= link_to "Cancel", user_account_path(id: current_user), data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
-  </div>
+</div>
   
-<% end %>
+  
+  

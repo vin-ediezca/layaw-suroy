@@ -37,8 +37,8 @@
     
     <% if current_user %>
       <ul>
-        <li><span class="signature">Created by: <%= dest.created_by %></span></li>
-        <li><span class="signature">Last updated by: <%= dest.last_update_by %></span></li>
+        <li><span class="signature"><em>Created by: <%= dest.created_by %></em></span></li>
+        <li><span class="signature"><em>Last updated by: <%= dest.last_update_by %></em></span></li>
       </ul>
     <% end %>
     
@@ -46,10 +46,12 @@
   
 <% end %>
 
-<div class="margin-20">
-  <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
-
+<% unless @tag.map_embed.empty? %>
+  <div class="margin-20">
+    <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+<% end %>
+  
 <h3>Featured Photos<h3>
 
 <div class="featured">

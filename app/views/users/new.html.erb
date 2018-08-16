@@ -1,13 +1,13 @@
-<%= form_for(:user, url: "/signup") do |f| %>
-
-  <ul class="nav nav-tabs">
-    <li role="presentation"><a href="<%= manage_path %>">Manage Users</a></li>
-    <li role="presentation" class="active"><a href="#">Add User</a></li>
-  </ul>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="<%= manage_path %>">Manage Users</a></li>
+  <li role="presentation" class="active"><a href="#">Add User</a></li>
+</ul>
     
-  <div class="panel panel-default">
+<div class="panel panel-default">
 
-    <div class="panel-body">
+  <div class="panel-body">
+    
+    <%= form_for :user, url: signup_path, html: {class: ""} do |f| %>
     
       <% if @user.errors.any? %>
         <% @user.errors.full_messages.each do |message| %>
@@ -15,42 +15,48 @@
         <% end %>
       <% end %>
       
-      <div class="input-group">
+      <div class="form-group">
         <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
       </div>
-      <div class="input-group">
+      
+      <div class="form-group">
         <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
       </div>
-      <div class="input-group">
+      
+      <div class="form-group">
         <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
       </div>
-      <div class="input-group">
+      
+      <div class="form-group">
         <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
       </div>
-      <div class="input-group">
+      
+      <div class="form-group">
         <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
       </div>
       
-      <div class="input-group">
-        <div class="btn-group">
-          <span class="btn btn-default btn-lg dropdown-toggle">
-            <strong>ROLE</strong>
-            <%= f.select(:role) do %>
-              <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
-                <%= content_tag(:option, c.first, value: c.last) %>
-              <% end %>
+      <div class="form-group">
+        <span class="btn btn-default btn-lg dropdown-toggle">
+          <strong>ROLE</strong>
+          <%= f.select(:role, html: {class: "btn btn-default btn-lg dropdown-toggle"}) do %>
+            <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
+              <%= content_tag(:option, c.first, value: c.last) %>
             <% end %>
-          </span>
-        </div>
+          <% end %>
+            </span>
       </div>
-    
-    </div>
-  
+      
+      <div class="btn-margin">
+        <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
+      </div>
+      
+    <% end %>
+      
   </div>
   
-  <div class="btn-margin">
-    <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
-  </div>
+</div>
   
-<% end %>
+ 
+  
+
 
