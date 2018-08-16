@@ -71,12 +71,15 @@ a:link {
 }
 
 .blog {
-  margin-top: 50px;
-  margin-bottom: 50px
+  margin: 50px 0;
 }
 
 .signature {
   color: #808080;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .featured img {
