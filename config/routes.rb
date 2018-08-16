@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   resources :destinations, only: [:new, :create, :edit, :update, :destroy]
   
   # User
-  get 'signup' => 'users#new'
-  post 'signup' => 'users#create'
-  get '/account/:id' => 'users#account', as: :user_account
-  get 'manage' => 'users#manage', as: :manage
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+  get '/account/:id', to: 'users#account', as: :user_account
+  get 'manage', to: 'users#manage', as: :manage
   resources :users, only: [:edit, :update, :destroy]
   
   # Session
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   
 end

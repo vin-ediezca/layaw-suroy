@@ -23,9 +23,16 @@ body {
   padding-top: 50px;
 }
 
+.navbar-brand {
+  margin: 0 10px;
+}
+
 .navbar-brand img {
+  position: absolute;
+  top: 8px;
+  left: 8px;
   width: auto;
-  height: 25px;
+  height: 35px;
 }
 
 .banner-logo img {
