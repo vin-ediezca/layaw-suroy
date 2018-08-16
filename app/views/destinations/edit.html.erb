@@ -22,7 +22,7 @@
       </div>
       
       <% if @destination.blog_image.attached? %>
-        <div class="margin-20"><%= link_to (image_tag @destination.blog_image.variant(resize: "300x300")), @destination.blog_image, target: :_blank  %></div>
+        <div class="margin-20"><%= link_to (image_tag @destination.blog_image.variant(resize: "300x300"), class: "img-responsive"), @destination.blog_image, target: :_blank  %></div>
       <% end %>
       
       <div class="form-group">

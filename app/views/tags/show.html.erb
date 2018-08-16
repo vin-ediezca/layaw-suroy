@@ -17,7 +17,7 @@
     <% end %>
 
     <div class="margin-20">
-      <%= link_to (image_tag @tag.image_header.variant(resize: "600x600")), @tag.image_header, target: :_blank  %>
+      <%= link_to (image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive"), @tag.image_header, target: :_blank  %>
     </div>
 
     <p><%= @tag.description %></p>
@@ -29,7 +29,7 @@
         <h4><%= dest.blog_title %></h4>
         
         <% if dest.blog_image.attached? %>
-          <%= link_to (image_tag dest.blog_image.variant(resize: "600x600")), dest, target: :_blank %>
+          <%= link_to (image_tag dest.blog_image.variant(resize: "600x600"), class: "img-responsive"), dest, target: :_blank %>
         <% end %>
         
         <p><%= simple_format(dest.blog_body) %></p>
@@ -60,7 +60,7 @@
 
     <div class="featured">
       <% @tag.image_uploads.each do |image| %>
-        <%= link_to (image_tag image.variant(resize: "300x300")), image, target: :_blank %>
+        <%= link_to (image_tag image.variant(resize: "300x300"), class: "img-responsive"), image, target: :_blank %>
       <% end %>
     </div>
 
