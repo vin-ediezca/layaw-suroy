@@ -49,8 +49,10 @@
       </div>
       
       <% unless @tag.map_embed.empty? %>
-        <div class="embed-responsive embed-responsive-4by3">
-          <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="embed-container">
+          <div class="embed-responsive embed-responsive-4by3">
+            <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
         </div>
       <% end %>
 
