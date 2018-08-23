@@ -19,7 +19,14 @@
     <% end %>
 
     <div class="margin-20">
-      <%= link_to (image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive"), @tag.image_header, target: :_blank  %>
+      <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive", id: "myImg" %>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
     </div>
 
     <p><%= @tag.description %></p>
