@@ -19,14 +19,7 @@
     <% end %>
 
     <div class="margin-20">
-      <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive", id: "myImg" %>
-    </div>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="img01">
-      <div id="caption"></div>
+      <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive myImg" %>
     </div>
 
     <p><%= @tag.description %></p>
@@ -69,9 +62,19 @@
 
     <div class="featured">
       <% @tag.image_uploads.each do |image| %>
-        <%= link_to (image_tag image.variant(resize: "300x300")), image, target: :_blank %>
+        <%= image_tag image.variant(resize: "600x600"), class: "myImg" %>
       <% end %>
     </div>
+
+    <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="modal-close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+        <!-- Modal Content (The Image) -->
+       <img class="modal-content" id="img01">        
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
 
   </div>
   

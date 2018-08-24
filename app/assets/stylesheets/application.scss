@@ -119,14 +119,16 @@ a:link {
 
 
 
-/* Modal */
-#myImg {
+
+/* MODAL */
+/* Style the Image Used to Trigger the Modal */
+.myImg {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
+.myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
@@ -143,7 +145,7 @@ a:link {
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-/* Modal Content (image) */
+/* Modal Content (Image) */
 .modal-content {
     margin: auto;
     display: block;
@@ -151,7 +153,7 @@ a:link {
     max-width: 700px;
 }
 
-/* Caption of Modal Image */
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
     margin: auto;
     display: block;
@@ -163,8 +165,8 @@ a:link {
     height: 150px;
 }
 
-/* Add Animation */
-.modal-content, #caption {    
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -172,17 +174,17 @@ a:link {
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
+    from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
+    from {transform:scale(0)}
     to {transform:scale(1)}
 }
 
 /* The Close Button */
-.close {
+.modal-close {
     position: absolute;
     top: 60px;
     right: 35px;
@@ -192,8 +194,8 @@ a:link {
     transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+.modal-close:hover,
+.modal-close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
