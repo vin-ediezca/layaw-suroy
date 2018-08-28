@@ -31,7 +31,7 @@
         <h4><%= dest.blog_title %></h4>
         
         <% if dest.blog_image.attached? %>
-          <%= link_to (image_tag dest.blog_image.variant(resize: "600x600"), class: "img-responsive"), dest.blog_image, target: :_blank %>
+          <%= image_tag dest.blog_image.variant(resize: "600x600"), class: "img-responsive myImg" %>
         <% end %>
         
         <p><%= simple_format(dest.blog_body) %></p>

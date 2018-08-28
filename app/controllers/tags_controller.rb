@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :require_user, only: [:new, :create, :edit, :update]
+  before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @home_banner  = true # allows banner to be displayed if viewed from index
@@ -51,6 +51,14 @@ class TagsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+
+    flash[:notice] = "Destination tag successfully deleted"
+    redirect_to root_path
   end
   
   private
