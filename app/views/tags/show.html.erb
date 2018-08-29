@@ -22,7 +22,7 @@
       <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive myImg" %>
     </div>
 
-    <p><%= @tag.description %></p>
+    <p><%= simple_format(@tag.description) %></p>
 
     <% @destinations.each do |dest| %>
 

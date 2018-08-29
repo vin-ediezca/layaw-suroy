@@ -1,6 +1,6 @@
 <ul class="limit nav nav-tabs">
-  <li role="presentation"><a href="<%= edit_tag_path(id: @tag_id)%>">Edit <%= @tag_title %> Tag</a></li>
-  <li role="presentation" class="active"><a href="#">Add a <%= @tag_title %> Blog</a></li>
+  <li role="presentation"><a href="<%= edit_tag_path(id: @tag_id)%>">Edit Destination Tag</a></li>
+  <li role="presentation" class="active"><a href="#">Add a Blog</a></li>
 </ul>
 
 <div class="limit panel panel-default">
@@ -9,8 +9,8 @@
     
     <%= form_for @destination, url: {action: "create"}, html: {class: ""} do |f| %>
 
-      <h3><%= @tag_title %></h3>
-      <p><%= @tag_description %></p>
+      <h3><%= @tag_title %> Blog</h3>
+      <p><%= simple_format(@tag_description) %></p>
 
 
       <% if @destination.errors.any? %>
