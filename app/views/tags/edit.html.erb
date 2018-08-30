@@ -11,7 +11,6 @@
     
       <h3><%= @tag.title %> Destination Tag</h3>
 
-
       <% if @tag.errors.any? %>
         <% @tag.errors.full_messages.each do |message| %>
           <div class="alert alert-warning alert-dismissible fade in" role="alert">
@@ -19,6 +18,13 @@
             <strong>Error:</strong> <%= message %>
           </div>
         <% end %>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Info:</strong> <%= flash[:notice] %>
+        </div>
       <% end %>
       
       <div class="form-group">
@@ -69,6 +75,7 @@
       <div class="featured-mod">
         <% @tag.image_uploads.each do |image| %>
           <%= link_to (image_tag image.variant(resize: "200x200")), image, target: :_blank %>
+          <%= link_to "Delete", delete_image_attachment_tag_url(image), method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-chevron-left" %>
         <% end %>
       </div>
       

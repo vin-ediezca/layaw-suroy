@@ -58,7 +58,7 @@
 
             <%= form_tag(tags_path, method: :get, class: "navbar-form navbar-right") do %>
               <div class="form-group">
-                <%= text_field_tag :tag_search, params[:tag_search], class: "form-control", placeholder: "Destination Search" %>
+                <%= text_field_tag :tag_search, params[:tag_search], class: "form-control", placeholder: "Search Destination" %>
               </div>
               <!-- <#%= submit_tag "Submit", class: "btn btn-default" %> -->
               <%= button_tag(type: "submit", class: "btn btn-default") do %>

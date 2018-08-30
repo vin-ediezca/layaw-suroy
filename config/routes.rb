@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   
   # Tag
   root 'tags#index'
-  resources :tags, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :tags
+  resources :tags do
+    member do
+      delete :delete_image_attachment
+    end
+  end
   
   # Destination
   resources :destinations, only: [:new, :create, :edit, :update, :destroy]

@@ -60,6 +60,13 @@ class TagsController < ApplicationController
     flash[:notice] = "Destination tag successfully deleted"
     redirect_to root_path
   end
+
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    flash[:notice] = "Photo successfully deleted"
+    redirect_back(fallback_location: edit_tag_path(session[:for_id]))
+  end
   
   private
     def tag_params
