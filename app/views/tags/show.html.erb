@@ -19,7 +19,9 @@
     <% end %>
 
     <div class="margin-20">
-      <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive myImg" %>
+      <% if @tag.image_header.attached? %>
+        <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive myImg" %>
+      <% end %>
     </div>
 
     <p><%= simple_format(@tag.description) %></p>

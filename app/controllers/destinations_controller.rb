@@ -47,6 +47,7 @@ class DestinationsController < ApplicationController
   
   def destroy
     @destination = Destination.find(params[:id])
+    @destination.blog_image.purge
     @destination.destroy
     
     flash[:notice] = "A blog was successfully deleted"

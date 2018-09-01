@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
-  before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_user, only: [:new, :create, :edit, :update, :destroy, :delete_image_attachment]
+  before_action :require_admin, only: [:destroy]
 
   def index
     @home_banner  = true # allows banner to be displayed if viewed from index
@@ -8,7 +9,7 @@ class TagsController < ApplicationController
     # Disables banner to be displayed while doing search
     unless params[:tag_search].blank?
       @home_banner  = false
-      flash[:search] = "Search results for: #{params[:tag_search]}"
+      flash[:search] = "#{params[:tag_search]}"
     end
     
     @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
@@ -55,8 +56,10 @@ class TagsController < ApplicationController
 
   def destroy
     @tag = Tag.find(params[:id])
+    purge_blog_image(@tag)
+    @tag.image_header.purge
+    @tag.image_uploads.purge
     @tag.destroy
-
     flash[:notice] = "Destination tag successfully deleted"
     redirect_to root_path
   end

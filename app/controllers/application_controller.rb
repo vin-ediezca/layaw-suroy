@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
       redirect_to user_account_path(id: current_user)
     end
   end
+
+  # Delete blog images through tags controller
+  def purge_blog_image(p)
+    @destinations = Destination.find_by_tag_id(p)
+    @destinations.blog_image.purge
+  end
+
 end
