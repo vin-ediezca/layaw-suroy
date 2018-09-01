@@ -1,17 +1,14 @@
 class DestinationsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :dest_find_id, only: [:edit, :update, :destroy]
+  before_action :dest_red_val, only: [:new, :create, :edit, :update]
+
 
   def new
-    @tag_id = session[:for_id] # for cancel redirection
-    @tag_title = session[:for_tag_title] # views Tag title
-    @tag_description = session[:for_tag_description] # views Tag description
     @destination = Destination.new
   end
   
   def create
-    @tag_id = session[:for_id] # for cancel redirection
-    @tag_title = session[:for_tag_title] # views Tag title
-    @tag_description = session[:for_tag_description] # views Tag description
     @destination = Destination.new(destination_params)
     @destination.tag_id = @tag_id
     @destination.created_by = current_user.first_name + " " + current_user.last_name
@@ -26,15 +23,9 @@ class DestinationsController < ApplicationController
   end
   
   def edit
-    @destination = Destination.find(params[:id])
-    @tag_id = @destination.tag_id # for cancel redirection
-    @tag_title = session[:for_tag_title] # views Tag title
   end
   
   def update
-    @destination = Destination.find(params[:id])
-    @tag_id = @destination.tag_id # for cancel redirection
-    @tag_title = session[:for_tag_title] # views Tag title
     @destination.last_update_by = current_user.first_name + " " + current_user.last_name
     
     if @destination.update(destination_params)
@@ -46,7 +37,6 @@ class DestinationsController < ApplicationController
   end
   
   def destroy
-    @destination = Destination.find(params[:id])
     @destination.blog_image.purge
     @destination.destroy
     
@@ -57,5 +47,15 @@ class DestinationsController < ApplicationController
   private
     def destination_params
       params.require(:destination).permit(:tag_id, :blog_title, :blog_body, :created_by, :last_update_by, :blog_image)
+    end
+
+    def dest_find_id
+      @destination = Destination.find(params[:id])
+    end
+
+    def dest_red_val
+      @tag_id = session[:for_id] # for cancel redirection
+      @tag_title = session[:for_tag_title] # views Tag title
+      @tag_description = session[:for_tag_description] # views Tag description
     end
 end

@@ -42,7 +42,7 @@
               <td><%= user.email %></td>
               <td><%= user.updated_at %></td>
               <td><%= user.role %></td>
-              <% unless current_user.id == user.id || user.id == 1 %>
+              <% unless owner_check(user) %>
                 <td><%= link_to "", user_path(user), method: "delete", data: {confirm: "Are you sure you want to remove #{user.email} from users?"}, class: "glyphicon glyphicon-trash" %></td>
               <% end %>
             </tr>

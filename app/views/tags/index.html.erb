@@ -22,7 +22,7 @@
         <div class="text-limit thumbnail">
 
           <% if tag.image_header.attached? %>
-            <%= image_tag tag.image_header.variant(resize: "600x600") %>
+            <%= image_tag img_resize(tag.image_header) %>
           <% end %>
 
           <div class="caption">

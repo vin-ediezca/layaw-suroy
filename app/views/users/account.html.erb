@@ -1,6 +1,6 @@
 <ul class="container-limit nav nav-tabs">
   <li role="presentation" class="active"><a href="#">My Account</a></li>
-  <li role="presentation"><a href="<%= edit_user_path(@account) %>">Change Password</a></li>
+  <li role="presentation"><a href="<%= edit_user_path(@user) %>">Change Password</a></li>
 </ul>
   
 <div class="container-limit panel panel-default">
@@ -23,15 +23,15 @@
     
     <dl class="dl-horizontal">
       <dt>Email</dt>
-      <dd><%= @account.email %></dd>
+      <dd><%= @user.email %></dd>
       <dt>First Name</dt>
-      <dd><%= @account.first_name %></dd>
+      <dd><%= @user.first_name %></dd>
       <dt>Last Name</dt>
-      <dd><%= @account.last_name %></dd>
+      <dd><%= @user.last_name %></dd>
       <dt>Last Update</dt>
-      <dd><%= @account.updated_at %></dd>
+      <dd><%= @user.updated_at %></dd>
       <dt>Role</dt>
-      <dd><%= @account.role %></dd>
+      <dd><%= @user.role %></dd>
     </dl>
 
   </div>

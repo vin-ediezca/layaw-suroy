@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update, :account, :manage, :destroy]
   before_action :require_admin, only: [:new, :create, :manage, :destroy]
   before_action :check_user, only: [:account, :edit, :update]
+  before_action :user_find_id, only: [:edit, :update, :account, :destroy]
 
   def new
     @user = User.new
@@ -20,11 +21,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
     user = User.find_by_email(current_user.email).try(:authenticate, params[:current_password])
     if user && @user.update(user_params)
       flash[:success] = "Password successfully changed"
@@ -37,7 +36,6 @@ class UsersController < ApplicationController
   end
   
   def account
-    @account = User.find(params[:id])
   end
   
   def manage
@@ -45,7 +43,6 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User deleted successfully"
     redirect_to manage_path
@@ -54,5 +51,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
+    end
+
+    def user_find_id
+      @user = User.find(params[:id])
     end
 end

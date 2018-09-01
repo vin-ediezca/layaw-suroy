@@ -34,7 +34,9 @@ class ApplicationController < ActionController::Base
   # Delete blog images through tags controller
   def purge_blog_image(p)
     @destinations = Destination.find_by_tag_id(p)
-    @destinations.blog_image.purge
+    if @destinations
+      @destinations.blog_image.purge
+    end
   end
 
 end

@@ -20,7 +20,7 @@
 
     <div class="margin-20">
       <% if @tag.image_header.attached? %>
-        <%= image_tag @tag.image_header.variant(resize: "600x600"), class: "img-responsive myImg" %>
+        <%= image_tag img_resize(@tag.image_header), class: "img-responsive myImg" %>
       <% end %>
     </div>
 
@@ -33,7 +33,7 @@
         <h4><%= dest.blog_title %></h4>
         
         <% if dest.blog_image.attached? %>
-          <%= image_tag dest.blog_image.variant(resize: "600x600"), class: "img-responsive myImg" %>
+          <%= image_tag img_resize(dest.blog_image), class: "img-responsive myImg" %>
         <% end %>
         
         <p><%= simple_format(dest.blog_body) %></p>
@@ -64,7 +64,7 @@
 
     <div class="featured">
       <% @tag.image_uploads.each do |image| %>
-        <%= image_tag image.variant(resize: "600x600"), class: "myImg" %>
+        <%= image_tag img_resize(image), class: "myImg" %>
       <% end %>
     </div>
 
