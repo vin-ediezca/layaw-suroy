@@ -1,15 +1,15 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Info:</strong> <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <h2>Destinations</h2>
 
 <% if flash[:search] %>
   <div class="margin-20">
     Search results for: <strong><%= flash[:search] %></strong>
-  </div>
-<% end %>
-
-<% if flash[:notice] %>
-  <div class="alert alert-info alert-dismissible fade in" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Info:</strong> <%= flash[:notice] %>
   </div>
 <% end %>
 
