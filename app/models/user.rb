@@ -8,6 +8,10 @@ class User < ApplicationRecord
   def admin?
     self.role == 'admin'
   end
+
+  def to_param
+    "#{id}-#{first_name}-#{last_name}"
+  end
   
   before_save :capitalize_fields
   before_save :downcase_fields

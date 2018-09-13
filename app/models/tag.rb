@@ -7,6 +7,10 @@ class Tag < ApplicationRecord
   validate :image_type
   
   before_save :capitalize_fields
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
   
   def capitalize_fields
     self.title = title.split.each { |n| 

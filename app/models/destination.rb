@@ -5,6 +5,10 @@ class Destination < ApplicationRecord
   validates :blog_title, :blog_body, presence: true
   validate :image_type
 
+  def to_param
+    "#{id}-#{blog_title}"
+  end
+
   private
     def image_type
       if blog_image.attached? == true
