@@ -73,3 +73,6 @@ gem "aws-sdk-s3", require: false
 # For Bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+
+# Note: You MUST use 5.0.0 or greater for Rails 4.0+
+gem 'friendly_id', '~> 5.2.0' 

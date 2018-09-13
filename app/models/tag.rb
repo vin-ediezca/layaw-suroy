@@ -2,16 +2,16 @@ class Tag < ApplicationRecord
   has_many :destinations
   has_one_attached :image_header
   has_many_attached :image_uploads
+
+  extend FriendlyId
+
+  friendly_id :title, use: :slugged
   
   validates :title, :description, :map_embed, presence: true
   validate :image_type
   
   before_save :capitalize_fields
 
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
-  
   def capitalize_fields
     self.title = title.split.each { |n| 
       n.capitalize!

@@ -2,12 +2,12 @@ class Destination < ApplicationRecord
   belongs_to :tags, required: false
   has_one_attached :blog_image
   
+  extend FriendlyId
+
+  friendly_id :blog_title, use: :slugged
+  
   validates :blog_title, :blog_body, presence: true
   validate :image_type
-
-  def to_param
-    "#{id}-#{blog_title}"
-  end
 
   private
     def image_type

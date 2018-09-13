@@ -75,6 +75,6 @@ class TagsController < ApplicationController
     end
 
     def tags_find_id
-      @tag = Tag.find(params[:id])
+      @tag = Tag.friendly.find(params[:id])
     end
 end

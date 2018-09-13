@@ -50,7 +50,7 @@ class DestinationsController < ApplicationController
     end
 
     def dest_find_id
-      @destination = Destination.find(params[:id])
+      @destination = Destination.friendly.find(params[:id])
     end
 
     def dest_red_val

@@ -1,5 +1,13 @@
 class User < ApplicationRecord
   has_secure_password
+
+  extend FriendlyId
+
+  friendly_id :combine_first_last, use: :slugged
+
+  def combine_first_last
+    self.first_name + " " + self.last_name
+  end
   
   def editor?
     self.role == 'editor'
@@ -7,10 +15,6 @@ class User < ApplicationRecord
   
   def admin?
     self.role == 'admin'
-  end
-
-  def to_param
-    "#{id}-#{first_name}-#{last_name}"
   end
   
   before_save :capitalize_fields
