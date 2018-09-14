@@ -7,7 +7,7 @@
 
     <div class="panel-body">   
     
-    <%= form_for @tag, url: {action: "update"}, html: {class: ""} do |f| %>
+    <%= form_with model: @tag, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
     
       <h3><%= @tag.title %> Destination Tag</h3>
 

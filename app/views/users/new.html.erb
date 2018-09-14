@@ -7,7 +7,7 @@
 
   <div class="panel-body">
     
-    <%= form_for :user, url: signup_path, html: {class: ""} do |f| %>
+    <%= form_with scope: :user, url: signup_path, html: {class: "signup-form"}, local: true do |f| %>
     
       <% if @user.errors.any? %>
         <% @user.errors.full_messages.each do |message| %>

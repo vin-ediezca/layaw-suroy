@@ -7,7 +7,7 @@
   
   <div class="panel-body">
     
-    <%= form_for @destination, url: {action: "create"}, html: {class: ""} do |f| %>
+    <%= form_with model: @destination, url: {action: "create"}, html: {class: ""}, local: true do |f| %>
 
       <h3><%= @tag_title %> Blog</h3>
       <p><%= simple_format(@tag_description) %></p>

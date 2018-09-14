@@ -20,7 +20,7 @@
       </div>
     <% end %>
 
-    <%= form_for :session, url: login_path, html: {class: ""} do |f| %>
+    <%= form_with scope: :session, url: login_path, html: {class: "login-form"}, local: true do |f| %>
       
       <div class="form-group">
         <div class="input-group input-group-lg">

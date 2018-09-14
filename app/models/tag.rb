@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  has_many :destinations
+  has_many :destinations #, dependent: :destroy # Uncomment to automatically delete all Destinations under associated Tag
   has_one_attached :image_header
   has_many_attached :image_uploads
 
