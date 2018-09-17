@@ -1,5 +1,5 @@
 class Destination < ApplicationRecord
-  belongs_to :tags, required: false
+  belongs_to :tag
   has_one_attached :blog_image
   
   extend FriendlyId
@@ -8,6 +8,7 @@ class Destination < ApplicationRecord
   
   validates :blog_title, :blog_body, presence: true
   validate :image_type
+  before_update :image_type
 
   private
     def image_type

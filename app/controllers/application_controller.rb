@@ -36,8 +36,6 @@ class ApplicationController < ActionController::Base
     @destinations = Destination.find_by_tag_id(p)
     if @destinations
       @destinations.blog_image.purge
-      @destinations.destroy
     end
   end
-
 end
