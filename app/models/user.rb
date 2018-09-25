@@ -32,8 +32,7 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
   validates :password_confirmation, 
             :presence => true, if: -> { !password.nil? }
-  validates :password, :presence => { :on => :create }, 
-            :length => { minimum: 8, allow_nil: false }
+  validates :password, :length => { minimum: 8, allow_nil: false } #, :presence => { :on => :create }
   validates :role, presence: true
   
 =begin 

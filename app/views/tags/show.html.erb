@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-8">
-  
-    <h3><%= @tag.title %></h3>
 
     <%= render 'shared/flash' %>
+  
+    <h2><%= @tag.title %></h2>
+
+    <div class="signature">Updated on <%= @tag.created_at.strftime("%d %B, %Y") %></div>
 
     <div class="margin-20">
       <% if @tag.image_header.attached? %>
@@ -17,10 +19,12 @@
 
       <div class="blog">
       
-        <h4><%= dest.blog_title %></h4>
+        <h3>&#9473; <%= dest.blog_title %> &#9473;</h3>
+
+        <div class="signature margin-20">Created by: <em><%= dest.created_by %></em></div>
         
         <% if dest.blog_image.attached? %>
-          <%= image_tag img_resize(dest.blog_image), class: "img-responsive modalImg" %>
+          <%= image_tag img_resize(dest.blog_image), class: "img-responsive modalImg text-center" %>
         <% end %>
         
         <p><%= simple_format(dest.blog_body) %></p>
@@ -31,10 +35,7 @@
         <% end %>
         
         <% if current_user %>
-          <ul>
-            <li><span class="signature"><em>Created by: <%= dest.created_by %></em></span></li>
-            <li><span class="signature"><em>Last updated by: <%= dest.last_update_by %></em></span></li>
-          </ul>
+          <div class="signature">Last updated by: <em><%= dest.last_update_by %></em></div>
         <% end %>
         
       </div>
@@ -47,7 +48,7 @@
       </div>
     <% end %>
       
-    <h3>Featured Photos<h3>
+    <h3 class="container">&#9473; Featured Photos &#9473;<h3>
 
     <div class="featured">
       <% @tag.image_uploads.each do |image| %>
