@@ -11,13 +11,13 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
       <div class="panel-body">
+
+        <%= render 'shared/errors', obj: @destination %>
         
         <%= form_with model: @destination, url: {action: "create"}, html: {class: ""}, local: true do |f| %>
 
           <h3><%= @tag_title %> Blog</h3>
           <p><%= simple_format(@tag_description) %></p>
-
-          <%= render 'shared/errors', obj: @destination %>
 
           <div class="form-group">
             <%= f.label :blog_image %>

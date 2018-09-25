@@ -5,7 +5,7 @@
   
     <h2><%= @tag.title %></h2>
 
-    <div class="signature">Updated on <%= @tag.created_at.strftime("%d %B, %Y") %></div>
+    <div class="signature">Updated on <%= @tag.updated_at.strftime("%d %B, %Y") %></div>
 
     <div class="margin-20">
       <% if @tag.image_header.attached? %>

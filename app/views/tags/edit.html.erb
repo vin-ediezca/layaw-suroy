@@ -10,15 +10,15 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
-      <div class="panel-body">   
+      <div class="panel-body">
+
+        <%= render 'shared/errors', obj: @tag %>
+
+        <%= render 'shared/flash' %>
         
         <%= form_with model: @tag, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
         
           <h3><%= @tag.title %> Destination Tag</h3>
-
-          <%= render 'shared/errors', obj: @tag %>
-
-          <%= render 'shared/flash' %>
           
           <div class="form-group">
             <div class="input-group">
