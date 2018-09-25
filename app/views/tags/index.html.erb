@@ -19,7 +19,7 @@
     <% @tags.each do |tag| %>
 
       <div class="col-sm-6 col-md-4">
-        <div class="text-limit thumbnail">
+        <div class="thumbnail">
 
           <% if tag.image_header.attached? %>
             <%= image_tag img_resize(tag.image_header) %>
@@ -28,7 +28,7 @@
           <div class="caption">
 
             <h3><%= tag.title %></h3>
-            <p><%= tag.description %></p>
+            <p><%= truncate(tag.description, length: 100) %></p>
 
             <div class="margin-20">
 

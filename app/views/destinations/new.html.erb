@@ -1,55 +1,53 @@
-<ul class="container-limit nav nav-tabs">
-  <li role="presentation"><a href="<%= edit_tag_path(id: @tag_id)%>">Edit Destination Tag</a></li>
-  <li role="presentation" class="active"><a href="#">Add a Blog</a></li>
-</ul>
-
-<div class="container-limit panel panel-default">
-  
-  <div class="panel-body">
-    
-    <%= form_with model: @destination, url: {action: "create"}, html: {class: ""}, local: true do |f| %>
-
-      <h3><%= @tag_title %> Blog</h3>
-      <p><%= simple_format(@tag_description) %></p>
-
-
-      <% if @destination.errors.any? %>
-        <% @destination.errors.full_messages.each do |message| %>
-          <div class="alert alert-warning alert-dismissible fade in" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Error:</strong> <%= message %>
-          </div>
-        <% end %>
-      <% end %>
-
-      <div class="form-group">
-        <%= f.label :blog_image %>
-        <%= f.file_field :blog_image %>
-      </div>
-      
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
-          <%= f.text_field :blog_title, class: "form-control" %>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_body %></span>
-          <%= f.text_area :blog_body, class: "form-control", rows: 15 %>
-        </div>
-      </div>
-      
-      <div class="btn-margin">
-        <%= f.button "Add", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
-        <%= link_to "Cancel", tag_path(id: @tag_id ), data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
-      </div>
-      
-    <% end %>
-    
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="<%= edit_tag_path(id: @tag_id)%>">Edit Destination Tag</a></li>
+      <li role="presentation" class="active"><a href="#">Add a Blog</a></li>
+    </ul>
   </div>
-  
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        
+        <%= form_with model: @destination, url: {action: "create"}, html: {class: ""}, local: true do |f| %>
+
+          <h3><%= @tag_title %> Blog</h3>
+          <p><%= simple_format(@tag_description) %></p>
+
+          <%= render 'shared/errors', obj: @destination %>
+
+          <div class="form-group">
+            <%= f.label :blog_image %>
+            <%= f.file_field :blog_image %>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_title %></span>
+              <%= f.text_field :blog_title, class: "form-control" %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_body %></span>
+              <%= f.text_area :blog_body, class: "form-control", rows: 15 %>
+            </div>
+          </div>
+          
+          <div class="btn-margin">
+            <%= f.button "Add", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
+            <%= link_to "Cancel", tag_path(id: @tag_id ), data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
+          </div>
+          
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
 </div>
   
   

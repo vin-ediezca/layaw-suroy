@@ -1,62 +1,61 @@
-<ul class="container-limit nav nav-tabs">
-  <li role="presentation"><a href="<%= manage_path %>">Manage Users</a></li>
-  <li role="presentation" class="active"><a href="#">Add User</a></li>
-</ul>
-    
-<div class="container-limit panel panel-default">
-
-  <div class="panel-body">
-    
-    <%= form_with scope: :user, url: signup_path, html: {class: "signup-form"}, local: true do |f| %>
-    
-      <% if @user.errors.any? %>
-        <% @user.errors.full_messages.each do |message| %>
-          <div class="alert alert-warning alert-dismissible fade in" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Error:</strong> <%= message %>
-          </div>
-        <% end %>
-      <% end %>
-      
-      <div class="form-group">
-        <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
-      </div>
-      
-      <div class="form-group">
-        <span class="btn btn-default btn-lg dropdown-toggle">
-          <strong>ROLE</strong>
-          <%= f.select(:role, html: {class: "btn btn-default btn-lg dropdown-toggle"}) do %>
-            <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
-              <%= content_tag(:option, c.first, value: c.last) %>
-            <% end %>
-          <% end %>
-            </span>
-      </div>
-      
-      <div class="btn-margin">
-        <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
-      </div>
-      
-    <% end %>
-      
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="<%= manage_path %>">Manage Users</a></li>
+      <li role="presentation" class="active"><a href="#">Add User</a></li>
+    </ul>
   </div>
-  
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        
+        <%= form_with scope: :user, url: signup_path, html: {class: "signup-form"}, local: true do |f| %>
+
+          <%= render 'shared/errors', obj: @user %>
+          
+          <div class="form-group">
+            <%= f.text_field :first_name, class: "form-control", :placeholder => "First Name" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.text_field :last_name, class: "form-control", :placeholder => "Last Name" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.email_field :email, class: "form-control", :placeholder => "Email" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Confirm Password" %>
+          </div>
+          
+          <div class="form-group">
+            <span class="btn btn-default btn-lg dropdown-toggle">
+              <strong>ROLE</strong>
+              <%= f.select(:role, html: {class: "btn btn-default btn-lg dropdown-toggle"}) do %>
+                <% [[nil, nil], ["Admin", "admin"], ["Editor", "editor"]].each do |c| -%>
+                  <%= content_tag(:option, c.first, value: c.last) %>
+                <% end %>
+              <% end %>
+                </span>
+          </div>
+          
+          <div class="btn-margin">
+            <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
+          </div>
+          
+        <% end %>
+          
+      </div>
+    </div>
+  </div>
 </div>
   
  

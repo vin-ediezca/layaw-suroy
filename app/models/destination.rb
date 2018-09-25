@@ -6,7 +6,7 @@ class Destination < ApplicationRecord
 
   friendly_id :blog_title, use: :slugged
   
-  validates :blog_title, :blog_body, presence: true
+  validates :blog_title, :blog_body, :tag_id, presence: true
   validate :image_type
   before_update :image_type
 

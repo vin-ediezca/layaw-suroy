@@ -1,39 +1,33 @@
-<ul class="container-limit nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">My Account</a></li>
-  <li role="presentation"><a href="<%= edit_user_path(@user) %>">Change Password</a></li>
-</ul>
-  
-<div class="container-limit panel panel-default">
-
-  <div class="panel-body">
-
-    <% if flash[:success] %>
-      <div class="alert alert-success alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success:</strong> <%= flash[:success] %>
-      </div>
-    <% end %>
-
-    <% if flash[:danger] %>
-      <div class="alert alert-danger alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Warning:</strong> <%= flash[:danger] %>
-      </div>
-    <% end %>
-    
-    <dl class="dl-horizontal">
-      <dt>Email</dt>
-      <dd><%= @user.email %></dd>
-      <dt>First Name</dt>
-      <dd><%= @user.first_name %></dd>
-      <dt>Last Name</dt>
-      <dd><%= @user.last_name %></dd>
-      <dt>Last Update</dt>
-      <dd><%= @user.updated_at %></dd>
-      <dt>Role</dt>
-      <dd><%= @user.role %></dd>
-    </dl>
-
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">My Account</a></li>
+      <li role="presentation"><a href="<%= edit_user_path(@user) %>">Change Password</a></li>
+    </ul>
   </div>
+</div>
+  
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">  
+    <div class="panel panel-default">
+      <div class="panel-body">
 
+        <%= render 'shared/flash' %>
+        
+        <dl class="dl-horizontal">
+          <dt>Email</dt>
+          <dd><%= @user.email %></dd>
+          <dt>First Name</dt>
+          <dd><%= @user.first_name %></dd>
+          <dt>Last Name</dt>
+          <dd><%= @user.last_name %></dd>
+          <dt>Last Update</dt>
+          <dd><%= @user.updated_at %></dd>
+          <dt>Role</dt>
+          <dd><%= @user.role %></dd>
+        </dl>
+
+      </div>
+    </div>
+  </div>
 </div>

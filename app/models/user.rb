@@ -16,16 +16,25 @@ class User < ApplicationRecord
   def admin?
     self.role == 'admin'
   end
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   before_save :capitalize_fields
   before_save :downcase_fields
   
-  validates :first_name, :last_name, :email, :role, presence: true
-  validates :first_name, :last_name, :length => { :minimum => 2 }
-  validates :email, :length => { :minimum => 17 }
-  validates :email, :uniqueness => { :message => "already taken" }
-  validates :password_confirmation, :presence => true, if: -> { !password.nil? }
-  validates :password, :presence => { :on => :create }, :length => { minimum: 8, allow_nil: false }
+  validates :first_name, presence: true,
+            :length => { :minimum => 2 }
+  validates :last_name, presence: true,
+            :length => { :minimum => 2 }
+  validates :email, presence: true, 
+            :length => { :minimum => 17 }, 
+            :uniqueness => { :message => "already taken" }, 
+            format: { with: VALID_EMAIL_REGEX }
+  validates :password_confirmation, 
+            :presence => true, if: -> { !password.nil? }
+  validates :password, :presence => { :on => :create }, 
+            :length => { minimum: 8, allow_nil: false }
+  validates :role, presence: true
   
 =begin 
   # you only need presence on create
