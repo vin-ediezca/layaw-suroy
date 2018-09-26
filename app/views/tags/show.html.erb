@@ -2,10 +2,11 @@
   <div class="col-md-8">
 
     <%= render 'shared/flash' %>
-  
-    <h2><%= @tag.title %></h2>
-
-    <div class="signature">Updated on <%= @tag.updated_at.strftime("%d %B, %Y") %></div>
+    
+    <blockquote>
+      <h2><%= @tag.title %></h2>
+      <footer>Updated on <%= @tag.updated_at.strftime("%d %B, %Y") %></footer>
+    </blockquote>
 
     <div class="margin-20">
       <% if @tag.image_header.attached? %>
@@ -47,8 +48,10 @@
         <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     <% end %>
-      
-    <h3 class="container">&#9473; Featured Photos &#9473;<h3>
+    
+    <% if @tag.image_uploads.attached? %>  
+      <h3 class="container">&#9473; Featured Photos &#9473;<h3>
+    <% end %>
 
     <div class="featured">
       <% @tag.image_uploads.each do |image| %>

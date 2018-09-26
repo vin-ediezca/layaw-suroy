@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   
   # Tag
   root 'tags#index'
-  resources :tags
   resources :tags do
     member do
       delete :delete_image_attachment
