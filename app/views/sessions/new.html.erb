@@ -11,7 +11,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
 
-        <%= render 'shared/flash' %>
+        <%= render 'shared/flash' if flash_list %>
 
         <%= form_with scope: :session, url: login_path, html: {class: "login-form"}, local: true do |f| %>
           

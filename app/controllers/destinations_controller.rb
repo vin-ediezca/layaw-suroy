@@ -40,7 +40,7 @@ class DestinationsController < ApplicationController
     @destination.blog_image.purge
     @destination.destroy
     
-    flash[:notice] = "A blog was successfully deleted"
+    flash[:info] = "A blog was successfully deleted"
     redirect_to tag_path(id: @destination.tag_id)
   end
   

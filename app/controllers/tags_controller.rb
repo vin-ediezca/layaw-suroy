@@ -6,12 +6,10 @@ class TagsController < ApplicationController
 
   def index
     @home_banner  = true # allows banner to be displayed if viewed from index
-    flash[:search] = nil
     
     # Disables banner to be displayed while doing search
-    unless params[:tag_search].blank?
+    unless params[:tag_search].blank? # blank? covers both nil and empty string
       @home_banner  = false
-      flash[:search] = "#{params[:tag_search]}"
     end
     
     @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
@@ -52,14 +50,14 @@ class TagsController < ApplicationController
     @tag.image_header.purge
     @tag.image_uploads.purge
     @tag.destroy
-    flash[:notice] = "Destination tag successfully deleted"
+    flash[:info] = "Destination tag successfully deleted"
     redirect_to root_path
   end
 
   def delete_image_attachment
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge
-    flash[:notice] = "Photo successfully deleted"
+    flash[:info] = "Photo successfully deleted"
     redirect_back(fallback_location: edit_tag_path(session[:for_id]))
   end
   

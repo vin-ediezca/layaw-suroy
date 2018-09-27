@@ -14,7 +14,7 @@
 
         <%= render 'shared/errors', obj: @tag %>
 
-        <%= render 'shared/flash' %>
+        <%= render 'shared/flash' if flash_list %>
         
         <%= form_with model: @tag, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
         

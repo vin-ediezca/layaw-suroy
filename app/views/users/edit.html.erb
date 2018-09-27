@@ -16,7 +16,7 @@
         
           <h4>Change Password for <%= @user.first_name %> <%= @user.last_name %></h4>
         
-          <%= render 'shared/flash' if flash[:danger] %>
+          <%= render 'shared/flash' if flash_list %>
           
           <div class="form-group">
             <div class="input-group">

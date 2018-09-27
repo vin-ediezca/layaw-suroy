@@ -1,19 +1,14 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info alert-dismissible fade in" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Info:</strong> <%= flash[:notice] %>
-  </div>
-<% end %>
-
 <hr>
 <h1 class="ribbon">
    <strong class="ribbon-content">&#x223E; Destinations &#x223E;</strong>
 </h1>
 <hr>
 
-<% if flash[:search] %>
+<%= render 'shared/flash' if flash_list %>
+
+<% unless params[:tag_search].blank? %> <!-- blank? covers both nil and empty string -->
   <div class="margin-20">
-    Search results for: <strong><%= flash[:search] %></strong>
+    <h4>Search results for: <strong><%= params[:tag_search] %></strong></h4>
   </div>
 <% end %>
 
