@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
   def check_user
     @user = User.friendly.find(params[:id])
     unless @user == current_user
-      flash[:danger] = "You are not clever as you think you are ;)"
-      redirect_to user_account_path(id: current_user)
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 

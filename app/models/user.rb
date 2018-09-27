@@ -19,9 +19,6 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  before_save :capitalize_fields
-  before_save :downcase_fields
-  
   validates :first_name, presence: true,
             :length => { :minimum => 2 }
   validates :last_name, presence: true,
@@ -34,6 +31,9 @@ class User < ApplicationRecord
             :presence => true, if: -> { !password.nil? }
   validates :password, :length => { minimum: 8, allow_nil: false } #, :presence => { :on => :create }
   validates :role, presence: true
+  
+  before_save :capitalize_fields
+  before_save :downcase_fields
   
 =begin 
   # you only need presence on create

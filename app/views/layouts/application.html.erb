@@ -17,94 +17,21 @@
 
   <body>
     <% if @home_banner %>
-      <div id="banner">
-        <%= image_tag "https://s3.amazonaws.com/lagawsuroy/Public/lagaw+suroy.png", class: "img-responsive" %>
-        <h1>Travel Blog <small>Where your next destination matters</small></h1>
-      </div>
-      <div class="container">
-        <span class="signature">
-          <p class="text-center">“Layaw” is the Hiligaynon word equivalent to travelling and “Suroy” is the Cebuano word for it. Most of the places featured are local spots in Negros and Cebu Islands.</p>
-          <p class="text-center">Going alone? No worries, we have our own sets of tour guides ready to accompany you to the places you want to visit while making sure you enjoy your privacy. With family and friends? We will provide you and your comrades with hassle free travel experience each with local touch of hospitality. </p>
-          <p class="text-center">Each destination will surely be a unique travel experience.</p>
-        </span>
-      </div>
+      <%= render 'layouts/banner' %>
     <% end %>
     
     <div class="container">
     
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-        
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!--
-            <a class="navbar-brand" href="<#%= root_path %>">
-              <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-            </a>
-            -->
-            <div class="navbar-brand">
-              <%= link_to image_tag("https://s3.amazonaws.com/lagawsuroy/Public/lagawsuroy-nav-brand.png", alt: "Lagaw Suroy"), root_path %>
-            </div>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <%= form_tag(tags_path, method: :get, class: "navbar-form navbar-right") do %>
-              <div class="form-group">
-                <%= text_field_tag :tag_search, params[:tag_search], class: "form-control", placeholder: "Search Destination" %>
-              </div>
-              <!-- <#%= submit_tag "Submit", class: "btn btn-default" %> -->
-              <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                  <i class="glyphicon glyphicon-search"></i>
-              <% end %>
-            <% end %>
-    
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
-                <li><%= link_to current_user.email, user_account_path(id: current_user) %></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Add a Destination Tag", new_tag_path %></li>
-                    <li role="separator" class="divider"></li>
-                    <% if current_user.admin? %>
-                      <li><%= link_to "Add User", signup_path %></li>
-                      <li><%= link_to "Manage Users", manage_path %></li>
-                    <% end %>
-                    <li><%= link_to "Change Password", edit_user_path(id: current_user) %></li>
-                    <li role="separator" class="divider"></li>
-                    <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-                  </ul>
-                </li>
-              <!--
-              <#% else %>
-                <li><#%= link_to "Login", login_path %></li>
-              -->
-              <% end %>
-            </ul>
-            
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+      <%= render 'layouts/navbar' %>
       
       <div id="body">
         <%= yield %>
       </div>
 
       <hr>
-      
-      <div id="footer">
-        <a href="https://www.facebook.com/lagaw.suroy.3"><i class="fab fa-facebook-f"></i> &bull; @layawsuroy</a>
-        </small>Copyright &copy; <%= Time.now.year %> Layaw Suroy</small>
-      </div>
-      
+      <%= render 'layouts/footer' %>
+
     </div>
+
   </body>
 </html>
