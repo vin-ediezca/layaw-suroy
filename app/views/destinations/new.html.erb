@@ -20,8 +20,10 @@
           <p><%= simple_format(@tag_description) %></p>
 
           <div class="form-group">
-            <%= f.label :blog_image %>
-            <%= f.file_field :blog_image %>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_image %></span>
+              <%= f.file_field :blog_image, class: "form-control" %>
+            </div>
           </div>
           
           <div class="form-group">

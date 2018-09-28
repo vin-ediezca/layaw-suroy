@@ -23,13 +23,17 @@
           </div>
           
           <div class="form-group">
-            <%= f.label :image_header %>
-            <%= f.file_field :image_header %>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :image_header %></span>
+              <%= f.file_field :image_header, class: "form-control" %>
+            </div>
           </div>
           
           <div class="form-group">
-            <%= f.label :image_uploads %>
-            <%= f.file_field :image_uploads, multiple: true %>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :image_uploads %></span>
+              <%= f.file_field :image_uploads, multiple: true, class: "form-control" %>
+            </div>
           </div>
           
           <div class="form-group">
