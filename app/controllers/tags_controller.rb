@@ -12,7 +12,7 @@ class TagsController < ApplicationController
       @home_banner  = false
     end
     
-    @tags = Tag.search(params[:tag_search]).order(created_at: :desc)
+    @tags = Tag.search(params[:tag_search]).paginate(:page => params[:page]).order(created_at: :desc)
   end
   
   def show

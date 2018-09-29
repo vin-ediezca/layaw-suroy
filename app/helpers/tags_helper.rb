@@ -11,5 +11,9 @@ module TagsHelper
 	def img_resize(tag)
 		tag.variant(resize: "600x600")
 	end
+
+	def tags_count
+		@tags.count >= 6
+	end
 	
 end

@@ -12,6 +12,9 @@ class Tag < ApplicationRecord
   
   before_save :capitalize_fields
 
+  # will_paginate per page
+  self.per_page = 6
+
   def capitalize_fields
     self.title = title.split.each { |n| 
       n.capitalize!

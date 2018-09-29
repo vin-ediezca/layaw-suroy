@@ -60,3 +60,7 @@
 
 <% end %>
 
+<% if tags_count %> 
+  <div class="margin-top-60 apple_pagination"><%= will_paginate @tags %></div>
+<% end %>
+
