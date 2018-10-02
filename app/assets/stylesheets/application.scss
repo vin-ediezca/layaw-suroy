@@ -147,7 +147,7 @@ a:link {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 200; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -199,7 +199,7 @@ a:link {
 /* The Close Button */
 .modalClose {
   position: absolute;
-  top: 60px;
+  top: 55px;
   right: 2%;
   color: #f1f1f1;
   font-size: 40px;
