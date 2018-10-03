@@ -8,6 +8,7 @@ class Tag < ApplicationRecord
   friendly_id :title, use: :slugged
   
   validates :title, :description, :map_embed, presence: true
+  validates :title, length: {minimum: 4, maximum: 50}
   validate :image_type
   
   before_save :capitalize_fields

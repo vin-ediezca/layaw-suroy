@@ -20,16 +20,16 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :first_name, presence: true,
-            :length => { :minimum => 2 }
+            length: {minimum: 2, maximum: 20}
   validates :last_name, presence: true,
-            :length => { :minimum => 2 }
+            length: {minimum: 2, maximum: 20}
   validates :email, presence: true, 
-            :length => { :minimum => 17 }, 
-            :uniqueness => { :message => "already taken" }, 
+            length: {minimum: 17, maximum: 30}, 
+            uniqueness: { message: "already taken" }, 
             format: { with: VALID_EMAIL_REGEX }
   validates :password_confirmation, 
-            :presence => true, if: -> { !password.nil? }
-  validates :password, :length => { minimum: 8, allow_nil: false } #, :presence => { :on => :create }
+            presence: true, if: -> { !password.nil? }
+  validates :password, length: { minimum: 8, allow_nil: false } #, :presence => { :on => :create }
   validates :role, presence: true
   
   before_save :capitalize_fields

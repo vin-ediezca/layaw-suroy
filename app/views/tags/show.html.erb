@@ -1,4 +1,6 @@
 <% content_for :title, @tag.title %>
+<%= provide(:description, truncate(@tag.description, length: 150)) %>
+
 
 <div class="row">
   <div class="col-md-8">

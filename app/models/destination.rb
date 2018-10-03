@@ -7,6 +7,7 @@ class Destination < ApplicationRecord
   friendly_id :blog_title, use: :slugged
   
   validates :blog_title, :blog_body, :tag_id, presence: true
+  validates :blog_title, length: {minimum: 4, maximum: 50}
   validate :image_type
   before_update :image_type
 
