@@ -13,7 +13,7 @@ module TagsHelper
 	end
 
 	def tags_count
-		@tags.count >= 6
+		@tags.count > 6
 	end
 	
 end
