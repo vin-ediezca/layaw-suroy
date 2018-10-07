@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :destroy]
   
   # Session
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+  get 'admin', to: 'sessions#new'
+  post 'admin', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
 end
