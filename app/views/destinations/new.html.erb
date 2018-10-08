@@ -14,6 +14,8 @@
     <div class="panel panel-default">
       <div class="panel-body">
 
+        <%= render 'shared/flash' if flash_list %>
+
         <%= render 'shared/errors', obj: @destination %>
         
         <%= form_with model: @destination, url: {action: "create"}, html: {class: ""}, local: true do |f| %>

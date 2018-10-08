@@ -3,6 +3,9 @@ class TagsController < ApplicationController
   before_action :require_admin, only: [:destroy]
   before_action :tags_find_id, only: [:show, :edit, :update, :destroy]
   before_action :tags_red_val, only: [:show, :edit, :update]
+  before_action :check_tag_creator, only: [:edit, :update, :destroy]
+  after_action :tags_red_val, only: [:create]
+
 
   def index
     @home_banner  = true # allows banner to be displayed if viewed from index
@@ -25,9 +28,11 @@ class TagsController < ApplicationController
   
   def create
     @tag = Tag.new(tag_params)
+    @tag.user = current_user
+    
     if @tag.save
       flash[:success] = "New destination tag successfully created"
-      redirect_to @tag
+      redirect_to new_destination_path
     else
       render 'new'
     end
@@ -74,5 +79,20 @@ class TagsController < ApplicationController
 
     def tags_find_id
       @tag = Tag.friendly.find(params[:id])
+    end
+
+    # Delete blog images through tags controller
+    def purge_blog_image(p)
+      @destinations = Destination.find_by_tag_id(p)
+      if @destinations
+        @destinations.blog_image.purge
+      end
+    end
+
+    def check_tag_creator
+      @tag = Tag.friendly.find(params[:id])
+      unless @tag.user == current_user
+        raise ActionController::RoutingError.new('Not Found')
+      end
     end
 end

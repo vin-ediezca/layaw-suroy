@@ -1,5 +1,6 @@
 class Tag < ApplicationRecord
-  has_many :destinations , dependent: :destroy
+  has_many :destinations, dependent: :destroy
+  belongs_to :user
   has_one_attached :image_header
   has_many_attached :image_uploads
 

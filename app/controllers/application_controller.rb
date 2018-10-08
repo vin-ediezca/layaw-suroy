@@ -22,19 +22,5 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to '/' unless current_user.admin?
   end
-  
-  def check_user
-    @user = User.friendly.find(params[:id])
-    unless @user == current_user
-      raise ActionController::RoutingError.new('Not Found')
-    end
-  end
 
-  # Delete blog images through tags controller
-  def purge_blog_image(p)
-    @destinations = Destination.find_by_tag_id(p)
-    if @destinations
-      @destinations.blog_image.purge
-    end
-  end
 end

@@ -2,6 +2,7 @@ class DestinationsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :dest_find_id, only: [:edit, :update, :destroy]
   before_action :dest_red_val, only: [:new, :create, :edit, :update]
+  before_action :check_dest_creator, only: [:edit, :update, :destroy]
 
 
   def new
@@ -10,9 +11,7 @@ class DestinationsController < ApplicationController
   
   def create
     @destination = Destination.new(destination_params)
-    @destination.tag_id = @tag_id
-    @destination.created_by = current_user.first_name + " " + current_user.last_name
-    @destination.last_update_by = current_user.first_name + " " + current_user.last_name
+    @destination.tag = Tag.find(@tag_id)
     
     if @destination.save
       flash[:success] = "New blog successfully added"
@@ -26,8 +25,6 @@ class DestinationsController < ApplicationController
   end
   
   def update
-    @destination.last_update_by = current_user.first_name + " " + current_user.last_name
-    
     if @destination.update(destination_params)
       flash[:success] = "Blog successfully updated"
       redirect_to tag_path(id: @tag_id )
@@ -57,5 +54,12 @@ class DestinationsController < ApplicationController
       @tag_id = session[:for_id] # for cancel redirection
       @tag_title = session[:for_tag_title] # views Tag title
       @tag_description = session[:for_tag_description] # views Tag description
+    end
+
+    def check_dest_creator
+      @destination = Destination.friendly.find(params[:id])
+      unless @destination.tag.user == current_user
+        raise ActionController::RoutingError.new('Not Found')
+      end
     end
 end

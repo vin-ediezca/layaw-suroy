@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :tags, dependent: :destroy
+  has_many :destinations, through: :tags
+
   has_secure_password
 
   extend FriendlyId

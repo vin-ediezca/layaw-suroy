@@ -15,5 +15,9 @@ module TagsHelper
 	def tags_count
 		@tags.count > 6
 	end
+
+	def check_tag_creator_views(tag)
+		tag.user == current_user
+	end
 	
 end

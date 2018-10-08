@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_022009) do
+ActiveRecord::Schema.define(version: 2018_10_08_153329) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_022009) do
   create_table "destinations", force: :cascade do |t|
     t.string "blog_title"
     t.text "blog_body"
-    t.string "created_by"
-    t.string "last_update_by"
     t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,7 +63,9 @@ ActiveRecord::Schema.define(version: 2018_09_26_022009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.integer "user_id"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
