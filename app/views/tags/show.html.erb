@@ -9,7 +9,7 @@
     
     <blockquote>
       <h2><%= @tag.title %></h2>
-      <footer>Created by: <em><%= @tag.user.first_name %></em> <em><%= @tag.user.last_name %></em> on <%= @tag.updated_at.strftime("%d %B, %Y") %></footer>
+      <footer>Created by: <em><%= "#{@tag.user.first_name} #{@tag.user.last_name}" if @tag.user %></em> on <%= @tag.updated_at.strftime("%d %B, %Y") %></footer>
     </blockquote>
 
     <div class="margin-20">
