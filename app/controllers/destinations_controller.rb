@@ -32,6 +32,13 @@ class DestinationsController < ApplicationController
       render 'edit'
     end
   end
+
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    flash[:info] = "Photo successfully deleted"
+    redirect_back(fallback_location: edit_destination_path(@image))
+  end
   
   def destroy
     @destination.blog_image.purge

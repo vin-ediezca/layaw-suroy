@@ -14,21 +14,12 @@
       <div class="panel-body">
 
         <%= render 'shared/errors', obj: @destination %>
+
+        <%= render 'shared/flash' if flash_list %>
         
         <%= form_with model: @destination, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
         
           <h3><%= @tag_title %> Blog</h3>
-        
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_image %></span>
-              <%= f.file_field :blog_image, multiple: true, class: "form-control" %>
-            </div>
-          </div>
-          
-          <% if @destination.blog_image.attached? %>
-            <div class="margin-20"><%= link_to (image_tag img_blog(@destination.blog_image), class: "img-responsive"), @destination.blog_image, target: :_blank  %></div>
-          <% end %>
           
           <div class="form-group">
             <div class="input-group">
@@ -43,6 +34,22 @@
               <%= f.text_area :blog_body, class: "form-control", rows: "15" %>
             </div>
           </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><%= f.label :blog_image %></span>
+              <%= f.file_field :blog_image, multiple: true, class: "form-control" %>
+            </div>
+          </div>
+
+          <% if @destination.blog_image.attached? %>
+            <div class="multiple-image-mod">
+              <% @destination.blog_image.each do |image| %>
+                <%= link_to (image_tag img_blog(image)), image, target: :_blank %>
+                <%= link_to "Delete", delete_image_attachment_destination_url(image), method: :delete, data: { confirm: 'Are you sure you want to delete this photo?' }, class: "glyphicon glyphicon-chevron-left" %>
+              <% end %>
+            </div>
+          <% end %>
           
           <div class="btn-margin">
             <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
