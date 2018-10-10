@@ -27,9 +27,20 @@
         <h3>&#9473; <%= dest.blog_title %> &#9473;</h3>
 
         <div class="signature margin-20">Updated on: <%= dest.updated_at.strftime("%d %B, %Y") %></div>
-        
+
         <% if dest.blog_image.attached? %>
-          <%= image_tag img_resize(dest.blog_image), class: "img-responsive modalImg text-center" %>
+          <div class="image-slide-container">
+
+            <% dest.blog_image.each do |image| %>
+              <%= image_tag img_resize(image), class: "img-responsive image-slide modalImg" %>
+            <% end %>
+
+            <% if count_image(dest) %>
+              <button class="left-slider-button" onclick="plusDivs(-1)">&#10094;</button>
+              <button class="right-slider-button" onclick="plusDivs(1)">&#10095;</button>
+            <% end %>
+
+          </div>
         <% end %>
         
         <p><%= simple_format(dest.blog_body) %></p>
@@ -59,14 +70,18 @@
       <% end %>
     </div>
 
-      <div id="modalId" class="modal">
-        <span class="modalClose">&times;</span>
-       <img class="modal-content" id="img01">        
-        <div id="caption"></div>
-      </div>
+    <div id="modalId" class="modal">
+      <span class="modalClose">&times;</span>
+     <img class="modal-content" id="img01">        
+      <div id="caption"></div>
+    </div>
 
   </div>
   <!--
   <div class="col-md-4">Ads Here</div>
   -->
 </div>
+
+<script>
+  showDivs(slideIndex);
+</script>

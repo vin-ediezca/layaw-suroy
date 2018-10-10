@@ -17,6 +17,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require scroll-button
+//= require image-slider
 
 
 

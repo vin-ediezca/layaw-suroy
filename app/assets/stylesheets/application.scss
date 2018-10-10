@@ -345,3 +345,28 @@ a:link {
 #scroll-top:hover {
   background-color: #555;
 }
+
+
+
+
+
+
+/* Image Slider */
+.image-slide-container {
+  position: relative;
+  max-width: 600px;
+}
+
+.image-slide {
+  display:none;
+}
+
+.right-slider-button, .left-slider-button {
+  font-size: 30px;
+  position: absolute;
+  top: 45%;
+}
+
+.right-slider-button {
+  right: 0;
+}

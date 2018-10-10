@@ -43,7 +43,7 @@ class DestinationsController < ApplicationController
   
   private
     def destination_params
-      params.require(:destination).permit(:tag_id, :blog_title, :blog_body, :created_by, :last_update_by, :blog_image)
+      params.require(:destination).permit(:tag_id, :blog_title, :blog_body, :created_by, :last_update_by, blog_image: [])
     end
 
     def dest_find_id
