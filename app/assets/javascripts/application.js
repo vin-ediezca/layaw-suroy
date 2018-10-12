@@ -16,7 +16,7 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
-//= require scroll-button
+//= require raw
 
 
 

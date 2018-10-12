@@ -32,6 +32,13 @@ class DestinationsController < ApplicationController
       render 'edit'
     end
   end
+
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    flash[:info] = "Photo successfully deleted"
+    redirect_back(fallback_location: edit_destination_path(@image))
+  end
   
   def destroy
     @destination.blog_image.purge
@@ -43,7 +50,7 @@ class DestinationsController < ApplicationController
   
   private
     def destination_params
-      params.require(:destination).permit(:tag_id, :blog_title, :blog_body, :created_by, :last_update_by, :blog_image)
+      params.require(:destination).permit(:tag_id, :blog_title, :blog_body, :created_by, :last_update_by, blog_image: [])
     end
 
     def dest_find_id

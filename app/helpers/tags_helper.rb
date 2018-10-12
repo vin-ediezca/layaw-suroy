@@ -19,5 +19,9 @@ module TagsHelper
 	def check_tag_creator_views(tag)
 		tag.user == current_user
 	end
+
+	def count_image(image)
+		image.blog_image.count > 1
+	end
 	
 end

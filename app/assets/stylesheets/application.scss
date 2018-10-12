@@ -101,7 +101,7 @@ a:link {
   margin-top: 5px;
 }
 
-.featured-mod img {
+.multiple-image-mod img {
   height: 120px;
   width: auto;
   margin-top: 5px;
@@ -344,4 +344,29 @@ a:link {
 
 #scroll-top:hover {
   background-color: #555;
+}
+
+
+
+
+
+
+/* Image Slider */
+.image-slide-container {
+  position: relative;
+  max-width: 600px;
+}
+
+.image-slide {
+  display:none;
+}
+
+.right-slider-button, .left-slider-button {
+  font-size: 30px;
+  position: absolute;
+  top: 42%;
+}
+
+.right-slider-button {
+  right: 0;
 }

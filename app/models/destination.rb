@@ -1,6 +1,6 @@
 class Destination < ApplicationRecord
   belongs_to :tag
-  has_one_attached :blog_image
+  has_many_attached :blog_image
   
   extend FriendlyId
 
@@ -14,8 +14,10 @@ class Destination < ApplicationRecord
   private
     def image_type
       if blog_image.attached? == true
-        if !blog_image.content_type.in?(%('image/jpeg image/png'))
-          errors.add(:blog_image, "must be JPEG or PNG")
+        blog_image.each do |image|
+          if !image.content_type.in?(%('image/jpeg image/png'))
+            errors.add(:blog_image, "must be JPEG or PNG")
+          end
         end
       end
     end

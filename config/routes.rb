@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   end
   
   # Destination
-  resources :destinations, only: [:new, :create, :edit, :update, :destroy]
+  # resources :destinations, only: [:new, :create, :edit, :update, :destroy]
+  resources :destinations do
+    member do
+      delete :delete_image_attachment
+    end
+  end
   
   # User
   get 'signup', to: 'users#new'
