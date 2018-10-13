@@ -59,6 +59,18 @@
         <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     <% end %>
+
+    <div id="share">
+      <div class="btn">
+        <i class="fa-inverse fas fa-share fa-3x fa-pulse"></i>
+      </div>
+
+      <a href="http://twitter.com/home?status=<%= request.original_url %>" title="Share on Twitter" target="_blank" class="btn"><i class="fa-inverse fab fa-twitter-square fa-4x"></i></a>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" title="Share on Facebook" target="_blank" class="btn"><i class="fa-inverse fab fa-facebook-square fa-4x"></i></a>
+
+      <a href="https://plus.google.com/share?url=<%= request.original_url %>" title="Share on Google+" target="_blank" class="btn"><i class="fa-inverse fab fa-google-plus-square fa-4x"></i></a>
+    </div>
     
     <% if @tag.image_uploads.attached? %>  
       <h3 class="margin-top-60">&#9473; Featured Photos &#9473;<h3>

@@ -350,6 +350,33 @@ a:link {
 
 
 
+/* Share Buttons */
+#share {
+  display: none;
+  position: fixed;
+  top: 60px;
+  z-index: 99;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #222222;
+}
+
+.fa-twitter-square:hover {
+  color: #1DA1F2;
+}
+
+.fa-google-plus-square:hover {
+  color: #DB4437;
+}
+
+.fa-facebook-square:hover {
+  color: #3B5998;
+}
+
+
+
+
+
 
 /* Image Slider */
 .image-slide-container {
