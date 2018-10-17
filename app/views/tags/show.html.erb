@@ -31,14 +31,18 @@
         <% if dest.blog_image.attached? %>
           <div class="image-slide-container">
 
-            <% dest.blog_image.each do |image| %>
-              <%= image_tag img_resize(image), class: "img-responsive image-slide modalImg" %>
-            <% end %>
-
             <% if count_image(dest) %>
+              <% dest.blog_image.each do |image| %>
+                <%= image_tag img_resize(image), class: "img-responsive image-slide modalImg" %>
+              <% end %>
               <button class="left-slider-button" onclick="plusDivs(-1)">&#10094;</button>
               <button class="right-slider-button" onclick="plusDivs(1)">&#10095;</button>
+            <% else %>
+              <% dest.blog_image.each do |image| %>
+                <%= image_tag img_resize(image), class: "img-responsive modalImg" %>
+              <% end %>
             <% end %>
+
 
           </div>
         <% end %>
