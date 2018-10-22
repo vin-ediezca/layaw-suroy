@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_secure_password
 
   extend FriendlyId
-
   friendly_id :combine_first_last, use: :slugged
 
   def combine_first_last

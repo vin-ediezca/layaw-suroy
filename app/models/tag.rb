@@ -1,11 +1,12 @@
 class Tag < ApplicationRecord
   has_many :destinations, dependent: :destroy
+  has_many :tag_categories
+  has_many :categories, through: :tag_categories
   belongs_to :user
   has_one_attached :image_header
   has_many_attached :image_uploads
 
   extend FriendlyId
-
   friendly_id :title, use: :slugged
   
   validates :title, :description, :map_embed, presence: true

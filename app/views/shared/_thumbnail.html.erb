@@ -1,0 +1,37 @@
+<div class="row">
+  <% obj.each do |tag| %>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+
+        <% if tag.image_header.attached? %>
+          <%= image_tag img_resize(tag.image_header) %>
+        <% end %>
+
+        <div class="caption">
+
+          <h3><%= tag.title %></h3>
+          <div class="signature margin-top-bottom-20">By <em><%= "#{tag.user.first_name} #{tag.user.last_name}" if tag.user %></em> on <%= tag.updated_at.strftime("%d %B, %Y") %></div>
+          <p><%= truncate(tag.description, length: 100) %></p>
+
+          <div class="margin-top-bottom-20">
+
+            <% if current_user && check_tag_creator_views(tag) %>
+
+              <%= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary" %>
+
+              <%= link_to "", tag_path(tag), method: "delete", data: { confirm: "Are you sure you want to delete #{tag.title} destination tag?" }, class: "remove far fa-times-circle fa-2x" %>
+
+            <% end %>
+            
+            <%= link_to "Show More", tag_path(tag), class: "btn btn-default" %>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  <% end %>
+</div>

@@ -3,7 +3,6 @@ class Destination < ApplicationRecord
   has_many_attached :blog_image
   
   extend FriendlyId
-
   friendly_id :blog_title, use: :slugged
   
   validates :blog_title, :blog_body, :tag_id, presence: true

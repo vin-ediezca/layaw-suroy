@@ -51,6 +51,16 @@
               <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
             </div>
           </div>
+
+          <div class="margin-top-60">
+            <h4>Categories</h4>
+            
+            <div class="form-group">
+              <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+                <% cb.label(class: "margin-right-20") {cb.check_box(class: "") + cb.text} %>
+              <% end %>
+            </div>
+          </div>
       
           <div class="btn-margin">
             <%= f.button "Add", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>

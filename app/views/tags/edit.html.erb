@@ -36,7 +36,7 @@
             </div>
           </div>
           
-          <div class="margin-20">
+          <div class="margin-top-bottom-20">
             <% if @tag.image_header.attached? %>
               <%= link_to (image_tag img_header(@tag.image_header), class: "img-responsive"), @tag.image_header, target: :_blank  %>
             <% end %>
@@ -64,22 +64,34 @@
             </div>
           <% end %>
 
-          <h4>Featured Photos</h4>
+          <div class="margin-top-60">
+            <h4>Featured Photos</h4>
 
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1"><%= f.label :image_uploads %></span>
-              <%= f.file_field :image_uploads, multiple: true, class: "form-control" %>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><%= f.label :image_uploads %></span>
+                <%= f.file_field :image_uploads, multiple: true, class: "form-control" %>
+              </div>
+            </div>
+            
+            <div class="multiple-image-mod">
+              <% @tag.image_uploads.each do |image| %>
+                <%= link_to (image_tag img_uploads(image)), image, target: :_blank %>
+                <%= link_to "Delete", delete_image_attachment_tag_url(image), method: :delete, data: { confirm: 'Are you sure you want to delete this photo?' }, class: "glyphicon glyphicon-chevron-left" %>
+              <% end %>
             </div>
           </div>
-          
-          <div class="multiple-image-mod">
-            <% @tag.image_uploads.each do |image| %>
-              <%= link_to (image_tag img_uploads(image)), image, target: :_blank %>
-              <%= link_to "Delete", delete_image_attachment_tag_url(image), method: :delete, data: { confirm: 'Are you sure you want to delete this photo?' }, class: "glyphicon glyphicon-chevron-left" %>
-            <% end %>
+
+          <div class="margin-top-60">
+            <h4>Categories</h4>
+
+            <div class="form-group">
+              <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+                <% cb.label(class: "margin-right-20") {cb.check_box(class: "") + cb.text} %>
+              <% end %>
+            </div>
           </div>
-          
+
           <div class="btn-margin">
             <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>
             <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>

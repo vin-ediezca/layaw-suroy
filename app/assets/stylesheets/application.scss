@@ -76,6 +76,23 @@ a:link {
   margin-top: 60px;
 }
 
+.margin-top-123 {
+  margin-top: 123px;
+}
+
+.margin-bot-30 {
+  margin-bottom: 30px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.margin-top-bottom-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .navbar-brand img {
   position: absolute;
   top: 8px;
@@ -85,6 +102,17 @@ a:link {
 
 .thumbnail {
   min-height: 600px;
+}
+
+.category {
+  min-height: 120px;
+}
+
+.category-h1-container {
+  margin: auto;
+  width: auto;
+  padding: 10px;
+  border-radius: 50px;
 }
 
 .blog {
@@ -109,11 +137,6 @@ a:link {
 
 .embed-container {
   max-width: 400px;
-}
-
-.margin-20 {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .btn-margin {

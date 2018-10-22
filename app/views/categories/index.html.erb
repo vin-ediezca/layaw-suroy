@@ -1,0 +1,37 @@
+<% content_for :title, "Layaw Suroy - Categories" %>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="text-center category-h1-container bg-primary"><h1>&#x21FA; Categories &#x21FB;<h1></div>
+
+    <hr>
+
+    <%= render 'shared/flash' if flash_list %>
+
+    <div class="row">
+      <% @categories.each do |category| %>
+        <div class="col-sm-4 col-md-3 margin-bot-30">
+          <div class="category text-center">
+
+            <h3><%= link_to "#{category.name}", category_path(category) %></h3>
+            <span class="badge"><%= pluralize(category.tags.count, "blog") %></span>
+            <% if current_user %>
+              <%= link_to "Edit", edit_category_path(category.id) %> | <%= link_to "Delete", category_path(category), method: "delete", data: { confirm: "Are you sure you want to delete #{category.name} category?" } %>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% if categories_count %> 
+      <div class="margin-top-60 apple_pagination"><%= will_paginate @categories %></div>
+    <% end %>
+
+  </div>
+
+  <!--
+  <div class="col-md-4">Ads Here</div>
+  -->
+</div>

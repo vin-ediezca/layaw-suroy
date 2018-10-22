@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       delete :delete_image_attachment
     end
   end
+
+  # Category
+  resources :categories
   
   # User
   get 'signup', to: 'users#new'

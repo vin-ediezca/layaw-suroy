@@ -1,0 +1,23 @@
+<% content_for :title, @category.name + " Category" %>
+
+<hr>
+<h1 class="ribbon">
+   <strong class="ribbon-content">&#x223E; <%= "#{@category.name} Category" %> &#x223E;</strong>
+</h1>
+<hr>
+
+<%= render 'shared/flash' if flash_list %>
+
+<% if @category_tags.present? %>
+
+  <%= render 'shared/thumbnail', obj: @category_tags %>
+
+<% else %>
+
+  <h4 class="text-center">No blogs associated with this category yet</h4>
+
+<% end %>
+
+<% if category_tags_count %> 
+  <div class="margin-top-60 apple_pagination"><%= will_paginate @category_tags %></div>
+<% end %>
