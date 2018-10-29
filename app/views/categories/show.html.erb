@@ -1,9 +1,7 @@
 <% content_for :title, @category.name + " Category" %>
 
 <hr>
-<h1 class="ribbon">
-   <strong class="ribbon-content">&#x223E; <%= "#{@category.name} Category" %> &#x223E;</strong>
-</h1>
+<div class="text-center category-h1-container"><h1>&#x21FA; <%= "#{@category.name} Category" %> &#x21FB;<h1></div>
 <hr>
 
 <%= render 'shared/flash' if flash_list %>
