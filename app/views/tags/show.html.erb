@@ -4,7 +4,6 @@
 
 <div class="row">
   <div class="col-md-8">
-
     <%= render 'shared/flash' if flash_list %>
     
     <blockquote>
@@ -21,20 +20,18 @@
     <p><%= simple_format(@tag.description) %></p>
 
     <% @destinations.each do |dest| %>
-
       <div class="blog">
-      
         <h3>&#9473; <%= dest.blog_title %> &#9473;</h3>
 
         <div class="signature margin-top-bottom-20">Updated on <%= dest.updated_at.strftime("%d %B, %Y") %></div>
 
         <% if dest.blog_image.attached? %>
           <div class="image-slide-container">
-
             <% if count_image(dest) %>
               <% dest.blog_image.each do |image| %>
                 <%= image_tag img_resize(image), class: "img-responsive image-slide modalImg" %>
               <% end %>
+
               <button class="left-slider-button" onclick="plusDivs(-1)">&#10094;</button>
               <button class="right-slider-button" onclick="plusDivs(1)">&#10095;</button>
             <% else %>
@@ -42,8 +39,6 @@
                 <%= image_tag img_resize(image), class: "img-responsive modalImg" %>
               <% end %>
             <% end %>
-
-
           </div>
         <% end %>
         
@@ -53,9 +48,7 @@
           <%= link_to "Edit", edit_destination_path(dest) %> | 
           <%= link_to "Delete", destination_path(dest), method: "delete", data: {confirm: "Are you sure you want to delete #{dest.blog_title} blog?"} %>
         <% end %>
-                
       </div>
-      
     <% end %>
 
     <% unless @tag.map_embed.empty? %>
@@ -91,11 +84,9 @@
       <img class="modal-content" id="img01">        
       <div id="caption"></div>
     </div>
-
   </div>
 
   <div class="col-md-4">
-
     <% if @tag_categories.any? %>
       <div class="row">
         <ul class="nav nav-tabs">
@@ -106,19 +97,15 @@
       <div class="row">
         <div class="panel panel-default">
           <div class="panel-body">
-      
             <% @tag_categories.each do |category| %>
               <div class="text-center">
                 <h3><%= link_to "#{category.name}", category_path(category) %></h3>
                 <span class="badge"><%= pluralize(category.tags.count, "blog") %></span>
               </div>
             <% end %>
-
           </div>
         </div>
       </div>
     <% end %>
-
   </div>
-
 </div>

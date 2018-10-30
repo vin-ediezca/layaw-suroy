@@ -13,9 +13,7 @@
   <div class="col-md-6 col-md-offset-3">    
     <div class="panel panel-default">
       <div class="panel-body">
-        
         <%= form_with scope: :user, url: signup_path, html: {class: "signup-form"}, local: true do |f| %>
-
           <%= render 'shared/errors', obj: @user %>
           
           <div class="form-group">
@@ -46,15 +44,13 @@
                   <%= content_tag(:option, c.first, value: c.last) %>
                 <% end %>
               <% end %>
-                </span>
+            </span>
           </div>
           
           <div class="btn-margin">
             <%= f.button "Add User", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Adding..."} %>
           </div>
-          
         <% end %>
-          
       </div>
     </div>
   </div>

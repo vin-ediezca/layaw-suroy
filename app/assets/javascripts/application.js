@@ -21,8 +21,6 @@
 
 
 $(document).on('turbolinks:load', function() {
-
-
   // Get the modal
   var modal = document.getElementById('modalId');
 
@@ -69,7 +67,6 @@ $(document).on('turbolinks:load', function() {
     } // End if
     
   });
-
 });
 
 

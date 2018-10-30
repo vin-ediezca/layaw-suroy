@@ -1,5 +1,4 @@
 module CategoriesHelper
-
   def categories_count
     @categories.count > 6
   end
@@ -7,5 +6,4 @@ module CategoriesHelper
   def category_tags_count
     @category_tags.count > 12
   end
-
 end

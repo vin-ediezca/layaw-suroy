@@ -1,5 +1,4 @@
 module TagsHelper
-
   def img_header(tag)
     tag.variant(resize: "300x300")
   end
@@ -23,5 +22,4 @@ module TagsHelper
   def count_image(image)
     image.blog_image.count > 1
   end
-  
 end

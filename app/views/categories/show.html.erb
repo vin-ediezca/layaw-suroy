@@ -7,13 +7,9 @@
 <%= render 'shared/flash' if flash_list %>
 
 <% if @category_tags.present? %>
-
   <%= render 'shared/thumbnail', obj: @category_tags %>
-
 <% else %>
-
   <h4 class="text-center">No blogs associated with this category yet</h4>
-
 <% end %>
 
 <% if category_tags_count %> 
