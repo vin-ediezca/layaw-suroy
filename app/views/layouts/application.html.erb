@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title><%= yield(:title) %></title>
 
     <%= csrf_meta_tags %>
@@ -26,6 +25,7 @@
       });
     </script>
 
+    <script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//delivery.adrecover.com/37262/adRecover.js?ts=1540909810563'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
   </head>
 
   <body>
@@ -36,7 +36,6 @@
     <div id="top"></div>
 
     <div class="container margin-top-60">
-    
       <%= render 'layouts/navbar' %>
       
       <div id="body">
@@ -45,7 +44,6 @@
 
       <hr>
       <%= render 'layouts/footer' %>
-
     </div>
 
     <a id="scroll-top" href="#top" title="Go to top"><span class="glyphicon glyphicon-chevron-up"></span></a>
