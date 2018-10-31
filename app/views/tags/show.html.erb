@@ -3,7 +3,7 @@
 
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 margin-bot-30">
     <%= render 'shared/flash' if flash_list %>
     
     <blockquote>
@@ -88,22 +88,17 @@
 
   <div class="col-md-4">
     <% if @tag_categories.any? %>
-      <div class="row">
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#"><strong>Related <%= "category".pluralize(@tag_categories.count) %></strong></a></li>
-        </ul>
-      </div>
-
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <% @tag_categories.each do |category| %>
-              <div class="text-center">
-                <h3><%= link_to "#{category.name}", category_path(category) %></h3>
-                <span class="badge"><%= pluralize(category.tags.count, "blog") %></span>
-              </div>
-            <% end %>
-          </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><strong>Related <%= "category".pluralize(@tag_categories.count) %></strong></h3>
+        </div>
+        <div class="panel-body">
+          <% @tag_categories.each do |category| %>
+            <div class="text-center">
+              <h3><%= link_to "#{category.name}", category_path(category) %></h3>
+              <span class="badge"><%= pluralize(category.tags.count, "blog") %></span>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
