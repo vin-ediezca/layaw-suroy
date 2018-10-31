@@ -51,12 +51,6 @@
       </div>
     <% end %>
 
-    <% unless @tag.map_embed.empty? %>
-      <div class="embed-responsive embed-responsive-4by3">
-        <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div>
-    <% end %>
-
     <div id="share">
       <div class="btn">
         <i class="fa-inverse fas fa-share fa-3x fa-pulse"></i>
@@ -100,6 +94,12 @@
             </div>
           <% end %>
         </div>
+      </div>
+    <% end %>
+
+    <% unless @tag.map_embed.empty? %>
+      <div class="embed-responsive embed-responsive-4by3">
+        <iframe src="<%= @tag.map_embed %>" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     <% end %>
   </div>
