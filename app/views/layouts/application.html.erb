@@ -33,15 +33,17 @@
     
     <div id="top"></div>
 
-    <div class="container margin-top-60">
-      <%= render 'layouts/navbar' %>
-      
-      <div id="body">
+    <%= render 'layouts/navbar' %>
+    
+    <div class="container">
+      <div class="main">
         <%= yield %>
       </div>
 
       <hr>
-      <%= render 'layouts/footer' %>
+      <div class="navbar navbar-static-bottom">
+        <%= render 'layouts/footer' %>
+      </div>
     </div>
 
     <a id="scroll-top" href="#top" title="Go to top"><span class="glyphicon glyphicon-chevron-up"></span></a>

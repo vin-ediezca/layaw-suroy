@@ -62,11 +62,4 @@ class DestinationsController < ApplicationController
       @tag_title = session[:for_tag_title] # views Tag title
       @tag_description = session[:for_tag_description] # views Tag description
     end
-
-    def check_dest_creator
-      @destination = Destination.friendly.find(params[:id])
-      unless @destination.tag.user == current_user
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    end
 end

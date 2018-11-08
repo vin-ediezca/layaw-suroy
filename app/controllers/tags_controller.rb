@@ -89,11 +89,4 @@ class TagsController < ApplicationController
         @destinations.blog_image.purge
       end
     end
-
-    def check_tag_creator
-      @tag = Tag.friendly.find(params[:id])
-      unless @tag.user == current_user
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    end
 end

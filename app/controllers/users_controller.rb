@@ -56,11 +56,4 @@ class UsersController < ApplicationController
     def user_find_id
       @user = User.friendly.find(params[:id])
     end
-
-    def check_user
-      @user = User.friendly.find(params[:id])
-      unless @user == current_user
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    end
 end

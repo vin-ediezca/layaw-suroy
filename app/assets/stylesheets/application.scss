@@ -15,10 +15,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  padding-top: 50px;
-}
-
 p {
   font-size: 16px;
   line-height: 1.8;
@@ -29,20 +25,12 @@ a:link {
   text-decoration: none;
 }
 
-#footer {
-  bottom: 0;
-  width: 100%;
-  color: #2F4F4F;
-  padding: 10px;
-  text-align: center;
-}
-
-#body {
-  padding-bottom: 60px;   /* Height of the footer */
+.main { 
+  padding-top: 110px;
+  padding-bottom: 70px;
 }
 
 #banner {
-  height: 46rem;
   background-image: url('https://s3.amazonaws.com/lagawsuroy/Public/IMG_6069.JPG');
   background-position: center;
   background-size: cover;
@@ -51,6 +39,8 @@ a:link {
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 46rem;
+  padding-top: 50px;
 }
 
 #banner h1 {
@@ -64,6 +54,7 @@ a:link {
 
 #banner img {
   height: 250px;
+  width: auto;
   margin: 10px;
 }
 
@@ -247,7 +238,7 @@ a:link {
 
 
 
-
+/* Destinations ribbon */
 .ribbon {
   font-size: 20px !important;
   /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
@@ -343,7 +334,7 @@ a:link {
 
 
 
-
+/* Scroll top button */
 #scroll-top {
   display: none;
   position: fixed;
