@@ -2,6 +2,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/errors', obj: @destination %>
+    <%= render 'shared/flash' if flash_list %>
+
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Edit Blog</a></li>
     </ul>
@@ -12,12 +15,7 @@
   <div class="col-md-6 col-md-offset-3">  
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= render 'shared/errors', obj: @destination %>
-
-        <%= render 'shared/flash' if flash_list %>
-        
         <%= form_with model: @destination, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
-        
           <h3><%= @tag_title %> Blog</h3>
           
           <div class="form-group">

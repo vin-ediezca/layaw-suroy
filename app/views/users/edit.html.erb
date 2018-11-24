@@ -2,6 +2,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/flash' if flash_list %>
+    <%= render 'shared/errors', obj: @user %>
+
     <ul class="nav nav-tabs">
       <li role="presentation"><a href="<%= user_account_path(id: current_user) %>">My Account</a></li>
       <li role="presentation" class="active"><a href="#">Change Password</a></li>
@@ -15,8 +18,6 @@
       <div class="panel-body">
         <%= form_with model: @user, url: {action: "update"}, html: {class: ""}, local: true do |f| %>
           <h4>Change Password for <%= @user.first_name %> <%= @user.last_name %></h4>
-        
-          <%= render 'shared/flash' if flash_list %>
           
           <div class="form-group">
             <div class="input-group">
@@ -38,8 +39,6 @@
               <%= f.password_field :password_confirmation, class: "form-control" %>
             </div>
           </div>
-          
-          <%= render 'shared/errors', obj: @user %>
           
           <div class="btn-margin">
             <%= f.button "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> Updating..."} %>

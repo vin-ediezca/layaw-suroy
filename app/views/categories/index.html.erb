@@ -2,11 +2,11 @@
 
 <div class="row">
   <div class="col-md-8">
+    <%= render 'shared/flash' if flash_list %>
+    
     <div class="text-center category-h1-container"><h1>&#x21FA; Categories &#x21FB;<h1></div>
 
     <hr>
-
-    <%= render 'shared/flash' if flash_list %>
 
     <div class="row">
       <% @categories.each do |category| %>

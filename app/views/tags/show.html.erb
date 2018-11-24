@@ -1,14 +1,13 @@
 <% content_for :title, @tag.title %>
 <%= provide(:description, truncate(@tag.description, length: 150)) %>
 
-
 <div class="row">
   <div class="col-md-8 margin-bot-30">
     <%= render 'shared/flash' if flash_list %>
     
     <blockquote>
       <h2><%= @tag.title %></h2>
-      <footer>By <em><%= "#{@tag.user.first_name} #{@tag.user.last_name}" if @tag.user %></em> on <%= @tag.updated_at.strftime("%d %B, %Y") %></footer>
+      <footer>by <em><%= "#{@tag.user.first_name} #{@tag.user.last_name}" if @tag.user %></em> on <%= @tag.updated_at.strftime("%d %B, %Y") %></footer>
     </blockquote>
 
     <div class="margin-top-bottom-20">
@@ -28,12 +27,32 @@
         <% if dest.blog_image.attached? %>
           <div class="image-slide-container">
             <% if count_image(dest) %>
-              <% dest.blog_image.each do |image| %>
-                <%= image_tag img_resize(image), class: "img-responsive image-slide modalImg" %>
-              <% end %>
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <% dest.blog_image.each_with_index do |image, i| %>
+                    <% if i == 0 %>
+                      <div class="item active">
+                        <%= image_tag img_resize(image), class: "img-responsive modalImg" %>
+                      </div>
+                    <% else %>
+                      <div class="item">
+                        <%= image_tag img_resize(image), class: "img-responsive modalImg" %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
 
-              <button class="left-slider-button" onclick="plusDivs(-1)">&#10094;</button>
-              <button class="right-slider-button" onclick="plusDivs(1)">&#10095;</button>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             <% else %>
               <% dest.blog_image.each do |image| %>
                 <%= image_tag img_resize(image), class: "img-responsive modalImg" %>

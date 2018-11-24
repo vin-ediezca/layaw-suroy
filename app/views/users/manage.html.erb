@@ -1,5 +1,7 @@
 <% content_for :title, "Manage Users" %>
 
+<%= render 'shared/flash' if flash_list %>
+
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Manage Users</a></li>
   <li role="presentation"><a href="<%= signup_path %>">Add User</a></li>
@@ -7,8 +9,6 @@
   
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= render 'shared/flash' if flash_list %>
-
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>

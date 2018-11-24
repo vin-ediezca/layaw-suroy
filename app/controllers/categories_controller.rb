@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:success] = "New category successfully created"
-      redirect_to category_path(@category)
+      redirect_to categories_path
     else
       render 'new'
     end

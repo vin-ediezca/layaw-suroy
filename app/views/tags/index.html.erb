@@ -1,12 +1,12 @@
 <% content_for :title, "Layaw Suroy - Home" %>
 
+<%= render 'shared/flash' if flash_list %>
+
 <hr>
 <h1 class="ribbon">
    <strong class="ribbon-content">&#x223E; Destinations &#x223E;</strong>
 </h1>
 <hr>
-
-<%= render 'shared/flash' if flash_list %>
 
 <% unless params[:tag_search].blank? %> <!-- blank? covers both nil and empty string -->
   <div class="margin-top-bottom-20">
