@@ -10,7 +10,7 @@
 
 <% unless params[:tag_search].blank? %> <!-- blank? covers both nil and empty string -->
   <div class="margin-top-bottom-20">
-    <h4>Search results for: <strong><%= params[:tag_search] %></strong></h4>
+    <h4>Search <%= pluralize(@tags.count, "result") %> for: <strong><%= params[:tag_search] %></strong></h4>
   </div>
 <% end %>
 
