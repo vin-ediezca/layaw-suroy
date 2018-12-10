@@ -10,9 +10,8 @@ class Tag < ApplicationRecord
   friendly_id :title, use: :slugged
   
   validates :title, :description, :map_embed, presence: true
-  validates :title, length: {minimum: 4, maximum: 50}
+  validates :title, length: {minimum: 4, maximum: 50} 
   validate :image_type
-  
   before_save :capitalize_fields
 
   # will_paginate per page
@@ -31,16 +30,16 @@ class Tag < ApplicationRecord
       where('title ILIKE ? OR description ILIKE ?', "%#{pattern}%", "%#{pattern}%")
     end
   end
-  
+
   private
     def image_type
-      if image_header.attached? == false
+      if !image_header.attached?
         errors.add(:image_header, "is missing")
       elsif !image_header.content_type.in?(%('image/jpeg image/png'))
         errors.add(:image_header, "must be JPEG or PNG")
       end
       
-      if image_uploads.attached? == true
+      if !image_uploads.attached?
         image_uploads.each do |image|
           if !image.content_type.in?(%('image/jpeg image/png'))
             errors.add(:image_uploads, "must be JPEG or PNG")

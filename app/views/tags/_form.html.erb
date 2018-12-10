@@ -1,0 +1,81 @@
+<%= form_with(model: tag, action: action, class: "", local: true) do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><%= f.label :title %></span>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><strong>Header image</strong></span>
+      <% unless @tag.image_header.attached? %>
+        <%= f.file_field :image_header, class: "form-control" %>
+      <% else %>
+        <%= f.file_field :image_header, disabled: true, class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @tag.image_header.attached? %>
+    <div class="margin-top-bottom-20">
+      <%= link_to (image_tag img_header(@tag.image_header), class: "img-responsive"), @tag.image_header, target: :_blank  %>
+      <%= link_to "Delete", delete_image_attachment_tag_url(@tag.image_header.id), method: :delete, data: { confirm: 'Are you sure you want to delete this photo?' }, class: "glyphicon glyphicon-chevron-left" %>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><%= f.label :description %></span>
+      <%= f.text_area :description, class: "form-control", rows: "5" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><%= f.label :map_embed %></span>
+      <%= f.text_area :map_embed, class: "form-control", rows: "5" %>
+    </div>
+  </div>
+
+  <% if @tag.map_embed.present? %>
+    <div class="form-group">
+      <div class="embed-container">
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe src="<%= @tag.map_embed %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><strong>Featured photos</strong></span>
+      <%= f.file_field :image_uploads, multiple: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <% if @tag.image_uploads.attached? %>
+    <div class="multiple-image-mod">
+      <% @tag.image_uploads.each do |image| %>
+        <%= link_to (image_tag img_uploads(image)), image, target: :_blank %>
+        <%= link_to "Delete", delete_image_attachment_tag_url(image), method: :delete, data: { confirm: 'Are you sure you want to delete this photo?' }, class: "glyphicon glyphicon-chevron-left" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="margin-top-60">
+    <h4>Categories</h4>
+    
+    <div class="form-group">
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+        <% cb.label(class: "margin-right-20") {cb.check_box(class: "") + cb.text} %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="btn-margin">
+    <%= f.button action == "create" ? "Upload" : "Update", class: "btn btn-primary", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i> #{action == 'create' ? 'Uploading' : 'Updating'}..."} %>
+    <%= link_to "Cancel", @tag, data: {confirm: "Are you sure you want to cancel?"}, class: "btn btn-default" %>
+  </div>
+<% end %>

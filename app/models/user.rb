@@ -7,18 +7,6 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :combine_first_last, use: :slugged
 
-  def combine_first_last
-    self.first_name + " " + self.last_name
-  end
-  
-  def editor?
-    self.role == 'editor'
-  end
-  
-  def admin?
-    self.role == 'admin'
-  end
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :first_name, presence: true,
@@ -45,8 +33,19 @@ class User < ApplicationRecord
   # and use confirmation to ensure they always match
   :confirmation => true
 =end
-  
-  
+
+  def combine_first_last
+    self.first_name + " " + self.last_name
+  end
+
+  def editor?
+    self.role == 'editor'
+  end
+
+  def admin?
+    self.role == 'admin'
+  end
+   
   def capitalize_fields
     self.first_name = first_name.split.each { |n| 
       n.capitalize! 
